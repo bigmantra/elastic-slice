@@ -10,7 +10,7 @@ export function uicoreMenuItemDirective() {
       item: '='
     },
     // replace: true,
-    template: '<div ng-include="::uicoreMenuItem.item.template"></div>',
+    template: '<div style="overflow:hidden" ng-include="::uicoreMenuItem.item.template"></div>',
     controller: uicoreMenuItemController,
     controllerAs: 'uicoreMenuItem',
     bindToController: true

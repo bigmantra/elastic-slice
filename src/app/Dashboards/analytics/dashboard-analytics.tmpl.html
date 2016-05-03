@@ -45,7 +45,7 @@
   </div>
 
 
-  <div eui-index="'nps'" eui-highlight="ejs.Highlight('_all').preTags('<mark>').postTags('</mark>')" eui-enabled="true">
+  <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')" eui-enabled="true">
 
     <div layout="column" layout-margin>
       <eui-searchbox field="'_all'"></eui-searchbox>
@@ -66,12 +66,28 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-content>
-          <span ng-bind-html="'....' + item.highlight._all[0]"></span>
+
+<!--          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
+            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Billing Account:</md-button><span>{{::item._source.billingAccountName}}</span>
+          </div>
+          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
+            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Desision Level:</md-button><span>{{::item._source.decisionLevel}}</span>
+          </div>
+          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
+            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Product Family:</md-button><span>{{::item._source.productFamily}}</span>
+          </div>
+          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
+            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Practice Area:</md-button><span>{{::item._source.practiceArea}}</span>
+          </div>-->
+
+
+
+          <span ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></span>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
+<!--        <md-card-actions layout="row" layout-align="end center">
+          <md-button>View Details</md-button>
+          <md-button>Account 360</md-button>
+        </md-card-actions>-->
       </md-card>
     </div>
 
