@@ -11,6 +11,12 @@
   .layout-margin > .widget {
     margin: 8px;
   }
+
+  mark {
+    background-color: transparent;
+    color: blue;
+  }
+
 }
 // - Chart Container
 .dashboard-fullwidth-chart {

@@ -1,6 +1,7 @@
 // The widgets show how to create reusable components on top of elasticslice.
 // You can also directly use the directive.template html in your front-end (see docs/widgets.md for more info)
 import {AngularTool} from "../../util/AngularTool";
+import {SearchBoxController} from "./SearchBoxController";
 
 export class SearchboxDirective {
   static $inject = ['$parse'];
@@ -12,7 +13,8 @@ export class SearchboxDirective {
 
     directive.scope = true;
 
-    directive.controller=SearchboxDirectiveController;
+    directive.controller=SearchBoxController;
+    directive.controllerAs= "ctrl";
 
     (<any>directive).link = {
       'pre': function (scope:any, element:ng.IAugmentedJQuery, attrs:any) {
@@ -32,8 +34,4 @@ export class SearchboxDirective {
   }
 }
 
-function SearchboxDirectiveController(){
 
-
-
-}

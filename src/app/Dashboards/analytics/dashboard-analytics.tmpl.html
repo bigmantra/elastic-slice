@@ -45,31 +45,50 @@
   </div>
 
 
-  <div eui-index="'nps'">
-
+  <div eui-index="'nps'" eui-highlight="ejs.Highlight('_all').preTags('<mark>').postTags('</mark>')" eui-enabled="true">
 
     <div layout="column" layout-margin>
       <eui-searchbox field="'_all'"></eui-searchbox>
     </div>
 
 
-
-    <div layout="row" layout-xs="column" layout-margin>
-
-      <md-list>
-        <md-subheader class="md-no-sticky">Primary Action</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="item in ::vm.emails">
-          <md-checkbox ng-model="item.selected"></md-checkbox>
-          <div class="md-list-item-text">
-            <h3>{{::item.from.name}}</h3>
-            <h4>{{::item.subject}}</h4>
-            <p>{{::item.content[0]}}</p>
-          </div>
-        </md-list-item>
-      </md-list>
-
+    <div ng-repeat="item in indexVM.results.hits.hits">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{::item._source.customerAccountName}}</span>
+            <span class="md-subhead">Responded to NPS Survey on {{::item._source.surveyDate | date}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media">
+              <img src="assets/images/dashboards/weather.jpg" alt="Card Image">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          <span ng-bind-html="'....' + item.highlight._all[0]"></span>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
 
+    <!--      <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in indexVM.results.hits.hits">
+              <md-checkbox ng-model="item.selected"></md-checkbox>
+              <div class="md-list-item-text">
+                <h3>Customer:{{::item._source.customerAccountName}}</h3>
+                <h4><strong>Billing Account:</strong> {{::item._source.billingAccountName}}</h4>
+                <h4 ng-bind-html="item.highlight._all[0]"></h4>
+                &lt;!&ndash;            <h4>{{::item.subject}}</h4>
+                            <p>{{::item.content[0]}}</p>&ndash;&gt;
+              </div>
+            </md-list-item>
+          </md-list>-->
+
   </div>
+
 
 </div>
