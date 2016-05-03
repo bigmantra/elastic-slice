@@ -37,7 +37,7 @@
 
         function injectFooterUpdateContent(viewName) {
             var contentView = $element.find('.uicore-content');
-            if (viewName === '@uicore' && angular.isDefined(uicoreLayout.layout.footerTemplateUrl)) {
+            if (viewName === '@elasticslice' && angular.isDefined(uicoreLayout.layout.footerTemplateUrl)) {
                 // add footer to the content view
                 $templateRequest(uicoreLayout.layout.footerTemplateUrl)
                 .then(function(template) {

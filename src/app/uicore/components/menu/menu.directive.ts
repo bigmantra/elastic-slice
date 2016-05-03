@@ -5,7 +5,7 @@
 export function uicoreMenuDirective($location, $mdTheming, uicoreTheming) {
   var directive = {
     restrict: 'E',
-    template: '<md-content><tri-menu-item permission permission-only="item.permission" ng-repeat="item in uicoreMenuController.menu | orderBy:\'priority\'" item="::item"></tri-menu-item></md-content>',
+    template: '<md-content><uicore-menu-item permission permission-only="item.permission" ng-repeat="item in uicoreMenuController.menu | orderBy:\'priority\'" item="::item"></uicore-menu-item></md-content>',
     scope: {},
     controller: uicoreMenuController,
     controllerAs: 'uicoreMenuController',

@@ -18,8 +18,11 @@ export default    function configLayout(uicoreLayoutProvider) {
   uicoreLayoutProvider.setDefaultOption('toolbarTemplateUrl', 'app/uicore/components/toolbars/toolbar.tmpl.html');
   uicoreLayoutProvider.setDefaultOption('toolbarController', 'DefaultToolbarController');
 
+
   // footer HTML
   uicoreLayoutProvider.setDefaultOption('footerTemplateUrl', 'app/layouts/footer/footer.tmpl.html');
+  /*uicoreLayoutProvider.setDefaultOption('footerController', 'FooterController');*/
+
 
   uicoreLayoutProvider.setDefaultOption('toolbarSize', 'default');
 

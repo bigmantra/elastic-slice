@@ -1,8 +1,8 @@
 /* @ngInject */
 export default function UserService($q, $http, RoleStore) {
   var currentUser = {
-    displayName: 'Christos',
-    username: 'christos',
+    displayName: 'Girish',
+    username: 'Girish',
     avatar: 'assets/images/avatars/avatar-5.png',
     roles: ['SUPERADMIN']
   };

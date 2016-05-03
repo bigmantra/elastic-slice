@@ -9,7 +9,10 @@ export class SearchboxDirective {
 
     var directive:ng.IDirective = {};
     directive.restrict = 'E';
+
     directive.scope = true;
+
+    directive.controller=SearchboxDirectiveController;
 
     (<any>directive).link = {
       'pre': function (scope:any, element:ng.IAugmentedJQuery, attrs:any) {
@@ -18,11 +21,19 @@ export class SearchboxDirective {
     }
 
     // TODO: should be debounced
-    directive.template = '\
+    /*directive.template = '\
             <input type="text" eui-query="ejs.MatchQuery(field, querystring)" ng-model="querystring" eui-enabled="querystring.length" />\
             ';
+*/
+    directive.templateUrl ='app/widgets/directives/SearchboxDirective.html';
+
 
     return directive;
   }
 }
 
+function SearchboxDirectiveController(){
+
+
+
+}
