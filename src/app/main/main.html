@@ -1,0 +1,56 @@
+<div layout="vertical" layout-fill>
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: block;
+      padding: 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #f5f5f5;
+      border-right: 1px solid #eee;
+    }
+
+    .instructions {
+      display: block;
+      margin: 0 auto;
+      width: 450px;
+    }
+  </style>
+
+  <md-content>
+    <div eui-index="'nps'" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3 sidebar">
+          <h3>Search</h3>
+          <eui-searchbox field="'_all'"></eui-searchbox> <!-- ACTION: change to field to search on -->
+          <h3>Single select facet</h3>
+          <eui-singleselect field="'segment'" size="5"></eui-singleselect>
+          <!-- ACTION: change to field to use as facet -->
+          <h3>Multi select facet</h3>
+          <eui-checklist field="'practiceArea'" size="10"></eui-checklist>
+          <!-- ACTION: change to field to use as facet -->
+          <h3>Results Per Page</h3>
+          <select ng-model="indexVM.pageSize">
+            <option ng-repeat="item in [10, 20, 50, 100]">{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h1>Results</h1>
+      <ul>
+        <li ng-repeat="doc in indexVM.results.hits.hits">
+          {{doc._source | json | limitTo: 500}} <!-- OPTIONAL: display more meaningful data instead of json -->
+        </li>
+      </ul>
+      <eui-simple-paging></eui-simple-paging>
+    </div>
+
+
+  </md-content>
+
+</div>
