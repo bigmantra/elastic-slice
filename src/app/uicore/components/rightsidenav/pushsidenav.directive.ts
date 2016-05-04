@@ -3,7 +3,10 @@ export default function sidenavPushIn () {
     restrict: 'A',
     require: '^mdSidenav',
     link: function ($scope, element, attr, sidenavCtrl) {
-      var body = angular.element(document.body);
+
+      /*var body = angular.element(document.body);*/
+
+      var body=angular.element(document.getElementsByClassName("md-sidenav-push-in-target"));
       body.addClass('md-sidenav-push-in');
       var cssClass = (element.hasClass('md-sidenav-left') ? 'md-sidenav-left' : 'md-sidenav-right') + '-open';
       var stateChanged = function (state) {

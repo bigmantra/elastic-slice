@@ -15,11 +15,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
   var vm=this;
 
-  $timeout(function () {
-  vm.openSidebar('rightsidebar');
-  $mdSidenav('rightsidebar')
-  },1000)
-
 
 
   function newMailNotificationController() {
