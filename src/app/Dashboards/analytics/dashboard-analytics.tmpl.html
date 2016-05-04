@@ -1,110 +1,151 @@
-<div class="dashboard-container overlay-10 padded-content-page" layout="column">
-  <div class="drag-container" layout="row" layout-xs="column" layout-margin dragula='"drag-analytics-container"'>
-    <uicore-widget palette-background="deep-orange:500" content-layout="row" content-layout-align="space-between center"
-                   content-padding>
-      <div>
-        <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
-      </div>
-      <div layout="column" layout-align="center end">
-        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="54"
-           decimals="0"></p>
-        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Comments</p>
-      </div>
-    </uicore-widget>
-    <uicore-widget palette-background="uicoreCyan:500" content-layout="row" content-layout-align="space-between center"
-                   content-padding>
-      <div>
-        <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-twitter"></md-icon>
-      </div>
-      <div layout="column" layout-align="center end">
-        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="101"
-           decimals="0"></p>
-        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Tweets</p>
-      </div>
-    </uicore-widget>
-    <uicore-widget palette-background="indigo:500" content-layout="row" content-layout-align="space-between center"
-                   content-padding>
-      <div>
-        <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
-      </div>
-      <div layout="column" layout-align="center end">
-        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="943" decimals="0"></p>
-        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Likes</p>
-      </div>
-    </uicore-widget>
-    <uicore-widget palette-background="teal:500" content-layout="row" content-layout-align="space-between center"
-                   content-padding>
-      <div>
-        <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
-      </div>
-      <div layout="column" layout-align="center end">
-        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="944" decimals="0"></p>
-        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Reach</p>
-      </div>
-    </uicore-widget>
-  </div>
 
 
-  <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')" eui-enabled="true">
 
-    <div layout="column" layout-margin>
-      <eui-searchbox field="'_all'"></eui-searchbox>
+
+
+
+  <div class="dashboard-container overlay-10 padded-content-page" layout="column">
+    <div class="drag-container" layout="row" layout-xs="column" layout-margin dragula='"drag-analytics-container"'>
+      <uicore-widget palette-background="deep-orange:500" content-layout="row" content-layout-align="space-between center"
+                     content-padding>
+        <div>
+          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
+        </div>
+        <div layout="column" layout-align="center end">
+          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="54"
+             decimals="0"></p>
+          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0">Comments</p>
+        </div>
+      </uicore-widget>
+      <uicore-widget palette-background="uicoreCyan:500" content-layout="row" content-layout-align="space-between center"
+                     content-padding>
+        <div>
+          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-twitter"></md-icon>
+        </div>
+        <div layout="column" layout-align="center end">
+          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="101"
+             decimals="0"></p>
+          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Tweets</p>
+        </div>
+      </uicore-widget>
+      <uicore-widget palette-background="indigo:500" content-layout="row" content-layout-align="space-between center"
+                     content-padding>
+        <div>
+          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
+        </div>
+        <div layout="column" layout-align="center end">
+          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="943" decimals="0"></p>
+          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Likes</p>
+        </div>
+      </uicore-widget>
+      <uicore-widget palette-background="teal:500" content-layout="row" content-layout-align="space-between center"
+                     content-padding>
+        <div>
+          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
+        </div>
+        <div layout="column" layout-align="center end">
+          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="944" decimals="0"></p>
+          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Reach</p>
+        </div>
+      </uicore-widget>
     </div>
 
 
-    <div ng-repeat="item in indexVM.results.hits.hits">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">{{::item._source.customerAccountName}}</span>
-            <span class="md-subhead">Responded to NPS Survey on {{::item._source.surveyDate | date}}</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media">
-              <img src="assets/images/dashboards/weather.jpg" alt="Card Image">
-            </div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-content>
-
-<!--          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
-            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Billing Account:</md-button><span>{{::item._source.billingAccountName}}</span>
-          </div>
-          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
-            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Desision Level:</md-button><span>{{::item._source.decisionLevel}}</span>
-          </div>
-          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
-            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Product Family:</md-button><span>{{::item._source.productFamily}}</span>
-          </div>
-          <div style="float:left;margin-right: 10px;padding-right:3px"  md-whiteframe="1">
-            <md-button class="md-raised" class="md-primary md-default" aria-label="raised button">Practice Area:</md-button><span>{{::item._source.practiceArea}}</span>
-          </div>-->
+    <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')"
+         eui-enabled="true">
 
 
 
-          <span ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></span>
-        </md-card-content>
-<!--        <md-card-actions layout="row" layout-align="end center">
-          <md-button>View Details</md-button>
-          <md-button>Account 360</md-button>
-        </md-card-actions>-->
-      </md-card>
-    </div>
 
-    <!--      <md-list>
-            <md-list-item class="md-3-line" ng-repeat="item in indexVM.results.hits.hits">
-              <md-checkbox ng-model="item.selected"></md-checkbox>
+
+
+
+      <div layout="column" layout-margin>
+        <eui-searchbox field="'_all'"></eui-searchbox>
+      </div>
+
+
+      <span>{{indexVM.results.hits.total}} Records Found</span>
+      <md-toolbar md-theme="cyan">
+        <div flex layout-align="center center" class="paging md-toolbar-tools" layout="row" paging page="indexVM.page"
+             page-size="indexVM.pageSize"
+             adjacent="1"
+             total="indexVM.results.hits.total>10000?10000:indexVM.results.hits.total" scroll-top="true"
+             hide-if-empty="true"
+             show-prev-next="true"
+             show-first-last="true">
+        </div>
+
+      </md-toolbar>
+
+
+      <md-sidenav style="position: absolute;" class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar" md-is-locked-open="true" >
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">Sidenav Right</h1>
+        </md-toolbar>
+        <md-content class="md-padding">
+          <p>This is the right sidebar</p>
+        </md-content>
+      </md-sidenav>
+
+      <md-content flex layout="column" layout-align="center center" md-content>
+
+        <div flex="95">
+
+
+          <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in indexVM.results.hits.hits"
+                          ng-click="vm.showDetailsDialog($event,item)" layout-wrap>
+              <img ng-src="{{::item._source.domain}}" class="md-avatar" alt="{{::item._source.customerAccountName}}"/>
               <div class="md-list-item-text">
-                <h3>Customer:{{::item._source.customerAccountName}}</h3>
-                <h4><strong>Billing Account:</strong> {{::item._source.billingAccountName}}</h4>
-                <h4 ng-bind-html="item.highlight._all[0]"></h4>
-                &lt;!&ndash;            <h4>{{::item.subject}}</h4>
-                            <p>{{::item.content[0]}}</p>&ndash;&gt;
+                <h3>{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
+                </h3>
+                <hr/>
+                <p ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></p>
+                <p ng-if="!item.highlight"> {{item._source.NPSComment}}</p>
+                <p ng-if="!item.highlight"> {{item._source.suggestionsToImprove}}></p>
               </div>
+
+              <div>
+                <md-icon style="color: limegreen; font-size: 32px;" md-font-icon="fa fa-smile-o fa-6"
+                         ng-show="item._source.rating > 8">
+                  <md-tooltip>
+                    {{item._source.rating}}
+                  </md-tooltip>
+                </md-icon>
+                <md-icon style="color: red; font-size: 32px;" md-font-icon="fa fa-frown-o fa-6"
+                         ng-show="item._source.rating < 6">
+                  <md-tooltip>
+                    {{item._source.rating}}
+                  </md-tooltip>
+                </md-icon>
+                <md-icon style="color: orange; font-size: 32px;" md-font-icon="fa fa-meh-o"
+                         ng-show="item._source.rating > 5 && item._source.rating < 9">
+                  <md-tooltip>
+                    {{item._source.rating}}
+                  </md-tooltip>
+                </md-icon>
+              </div>
+
             </md-list-item>
-          </md-list>-->
+
+
+          </md-list>
+
+
+        </div>
+
+
+        <!--
+              <ng-include ng-if="!item.highlight"
+                          src="'app/Dashboards/analytics/response-details-table.tmpl.html'">
+              </ng-include>-->
+
+      </md-content>
+
+    </div>
+
 
   </div>
 
 
-</div>

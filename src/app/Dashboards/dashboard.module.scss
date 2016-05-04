@@ -2,6 +2,27 @@
 
 // Dashboard Container
 .dashboard-container {
+
+  .md-sidenav-push-in {
+    // drawers
+    .md-sidenav-push-in-target {
+      transform: translate(0px);
+      // same as in md-sidenav.md-closed-add.md-closed-add-active, md-sidenav.md-closed-remove.md-closed-remove-active selector
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    &.md-sidenav-left-open {
+      .md-sidenav-push-in-target {
+        transform: translate(304px);
+      }
+    }
+    &.md-sidenav-right-open {
+      .md-sidenav-push-in-target {
+        transform: translate(-304px);
+      }
+    }
+  }
+
+
   .layout-margin {
     margin: 0px;
   }
@@ -17,7 +38,38 @@
     color: blue;
   }
 
+  .md-table-page-nav {
+    margin-left: 32px;
+    .md-button {
+      margin: 0;
+    }
+  }
+
+  md-list-item{
+    background-color: lightgrey;
+    margin-bottom: 5px;
+
+  }
+
+  .paging{
+
+    li{
+      float:left;
+      border: 1px;
+      border-color: white;
+    }
+
+    li a {
+      color: white;
+      font-size: 12px;
+      border: 1px solid white;
+      padding:6px 6px
+    }
+
+  }
+
 }
+
 // - Chart Container
 .dashboard-fullwidth-chart {
   .chart-container {
@@ -33,6 +85,7 @@
     display: none;
   }
 }
+
 .google-chart {
   height: 100%;
   width: 100%;
@@ -43,4 +96,5 @@
   md-pagination-wrapper, md-tabs-canvas {
     height: 72px;
   }
+
 }

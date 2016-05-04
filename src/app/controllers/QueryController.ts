@@ -31,6 +31,7 @@ export class QueryController {
   }
 
   private updateQuery() {
+
     if (!this.scope.query.query) {
       return;
     }
@@ -39,5 +40,7 @@ export class QueryController {
     } else {
       this.scope.indexVM.query = this.scope.query.query;
     }
+
+    this.scope.indexVM.page=1;
   }
 }

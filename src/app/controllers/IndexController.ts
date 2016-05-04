@@ -157,6 +157,7 @@ export class IndexController {
         this.onError(err);
       }
     });
+
   }
 
   public refresh(softRefresh:boolean = true) {
