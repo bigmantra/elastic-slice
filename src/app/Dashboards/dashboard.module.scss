@@ -1,35 +1,41 @@
 // Dashboard
 
-
 /* hi-res laptops and desktops */
-@media (min-width:800px) {
-  .disable-small{
-    display:none;
+@media (min-width: 800px) {
+  .disable-small {
+    display: none;
   }
-  md-checkbox{
+  md-checkbox {
     margin-bottom: 3px;
+  }
+
+  md-checkbox span {
+
+    font-size: 12px;
+
+  }
+  md-toolbar h4 {
+
+    font-size: 16px;
+    text-align: center;
+
   }
 }
 
-@media (max-width:800px) {
-  .disable-large{
-    display:none;
+@media (max-width: 800px) {
+  .disable-large {
+    display: none;
   }
 }
 
 /* ----------- iPhone 5 and 5S ----------- */
-@media screen
-and (min-device-width: 320px)
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2){
+@media screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
 
-
-  .disable-large{
-    display:none;
+  .disable-large {
+    display: none;
   }
 
 }
-
 
 // Dashboard Container
 .dashboard-container {
@@ -56,16 +62,16 @@ and (-webkit-min-device-pixel-ratio: 2){
     }
   }
 
-  md-list-item{
+  md-list-item {
     background-color: lightgrey;
     margin-bottom: 5px;
 
   }
 
-  .paging{
+  .paging {
 
-    li{
-      float:left;
+    li {
+      float: left;
       border: 1px;
       border-color: white;
     }
@@ -74,7 +80,7 @@ and (-webkit-min-device-pixel-ratio: 2){
       color: white;
       font-size: 12px;
       border: 1px solid white;
-      padding:6px 6px
+      padding: 10px 10px;
     }
 
   }

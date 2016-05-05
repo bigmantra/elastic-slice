@@ -52,7 +52,6 @@
     <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')"
          eui-enabled="true">
 
-
       <div md-theme="cyan" layout="column" layout-margin>
         <div flex>
           <eui-searchbox field="'_all'"></eui-searchbox>
@@ -87,10 +86,10 @@
 
           <h3>Results</h3>
           <span flex></span>
-          <div layout-align="center center" class="paging disable-large" layout="row" paging
+          <div layout-align="right center" class="paging disable-large" layout="row" paging
                page="indexVM.page"
                page-size="indexVM.pageSize"
-               adjacent="1"
+               adjacent="2"
                total="indexVM.results.hits.total>9000?9000:indexVM.results.hits.total" scroll-top="true"
                hide-if-empty="true"
                show-prev-next="true"
@@ -102,7 +101,7 @@
           <md-button class="md-icon-button toolbar-button disable-small"
                      ng-click="vm.openSidebar('rightsidebar')"
                      aria-label="search filters">
-            <md-icon md-font-icon="fa fa-search"></md-icon>
+            <md-icon md-font-icon="fa fa-filter"></md-icon>
           </md-button>
 
 
@@ -158,6 +157,7 @@
           <md-content layout="column" class="content-wrapper md-padding disable-large" flex="30" id="content">
             <div flex>
               <md-content>
+                <eui-checklist field="'surveyMonth'" size="5"></eui-checklist>
                 <eui-checklist field="'productFamily'" size="5"></eui-checklist>
                 <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
                 <eui-checklist field="'rating'" size="10"></eui-checklist>
