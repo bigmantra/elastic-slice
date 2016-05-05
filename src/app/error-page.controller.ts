@@ -7,7 +7,7 @@ export default  function ErrorPageController($state) {
   /////////
 
   function goHome() {
-    $state.go('elasticslice.dashboard-analytics');
+    $state.go('elasticslice.dashboard-search');
   }
 }
 

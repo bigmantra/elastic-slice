@@ -2,8 +2,8 @@
 export default    function translateConfig(uicoreSettingsProvider, uicoreRouteProvider) {
   var now = new Date();
   // set app name & logo (used in loader, sidemenu, footer, login pages, etc)
-  uicoreSettingsProvider.setName('elasticslice');
-  uicoreSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' bigmantra.com');
+  uicoreSettingsProvider.setName('proteus');
+  uicoreSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' Lexis Nexis');
   uicoreSettingsProvider.setLogo('assets/images/logo.png');
   // set current version of app (shown in footer)
   uicoreSettingsProvider.setVersion('0.0.1');

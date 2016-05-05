@@ -5,10 +5,10 @@ export class QueryDirective {
     directive.restrict = 'A';
     directive.scope = true;
     directive.controller = QueryController;
-    directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, queryCtrl:any) {
-      scope.$watch(element.attr('eui-query') + " | euiCached", (val:any) => {
+    directive.require= ['euiQuery'];
+    directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, controllers:any) {
+      scope.$watch(element.attr('eui-query').replace('$$$',scope.queryType) + " | euiCached", (val:any) => {
           scope.query.query = val
-         
 
         }
       );
@@ -20,12 +20,14 @@ export class QueryDirective {
         enabled = scope.$eval(enabledAttr);
       }
 
+
       scope.query = {
-        query: scope.$eval(element.attr('eui-query') + " | euiCached"),
+        query: scope.$eval(element.attr('eui-query').replace('$$$',scope.queryType) + " | euiCached"),
         enabled: enabled
+
       };
 
-      queryCtrl.init();
+      controllers[0].init();
     }
     return directive;
   }

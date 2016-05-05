@@ -3,14 +3,19 @@ export default    function moduleConfig($stateProvider, uicoreMenuProvider) {
 
   $stateProvider
 
-    .state('elasticslice.dashboard-analytics', {
-      url: '/dashboards/analytics',
-      templateUrl: 'app/dashboards/analytics/dashboard-analytics.tmpl.html',
+    .state('elasticslice.dashboard-search', {
+      url: '/dashboards/search',
+      templateUrl: 'app/dashboards/analytics/dashboard-search.tmpl.html',
       controller: 'DashboardAnalyticsController',
       controllerAs: 'vm'
     })
+    .state('elasticslice.dashboard-NPS', {
+      url: '/dashboards/search',
+      templateUrl: 'app/dashboards/analytics/dashboard-NPS.tmpl.html',
+      controllerAs: 'vm'
+    })
 
-  
+
 
   uicoreMenuProvider.addMenu({
     name: 'Dashboards',
@@ -18,8 +23,12 @@ export default    function moduleConfig($stateProvider, uicoreMenuProvider) {
     type: 'dropdown',
     priority: 1.1,
     children: [{
-      name: 'Analytics',
-      state: 'elasticslice.dashboard-analytics',
+      name: 'Search',
+      state: 'elasticslice.dashboard-search',
+      type: 'link'
+    },{
+      name: 'NPS Summary',
+      state: 'elasticslice.dashboard-NPS',
       type: 'link'
     }]
   });

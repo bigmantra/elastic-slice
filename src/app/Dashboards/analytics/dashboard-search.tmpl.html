@@ -53,20 +53,27 @@
          eui-enabled="true">
 
       <div md-theme="cyan" layout="column" layout-margin>
-        <div flex>
-          <eui-searchbox field="'_all'"></eui-searchbox>
+
+
+        <div layout="row" layout-align="center center">
+          <eui-searchbox flex="80" field="'_all'"></eui-searchbox>
+          <md-input-container>
+            <label>Pg. Size</label>
+            <md-select ng-model="indexVM.pageSize">
+              <md-option ng-repeat="item in [5,10, 20, 50, 100]">{{item}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+            <label>Type</label>
+            <md-select ng-model="vm.queryType">
+              <md-option ng-repeat="item in ['MatchQuery','FuzzyQuery', 'WildcardQuery']">{{item}}</md-option>
+            </md-select>
+          </md-input-container>
         </div>
+
 
       </div>
 
-      <md-input-container flex="20">
-        <label>Page Size</label>
-        <md-select ng-model="indexVM.pageSize">
-
-          <md-option ng-repeat="item in [10, 20, 50, 100]">{{item}}</md-option>
-        </md-select>
-      </md-input-container>
-      <span style="margin-left: 30px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.page * indexVM.pageSize}} of {{indexVM.results.hits.total}} Records</span>
 
 
       <md-content layout="column">
@@ -82,10 +89,11 @@
         </md-sidenav>
 
 
+
         <md-toolbar layout="row" class="md-toolbar-tools" md-theme="cyan">
 
           <h3>Results</h3>
-          <span flex></span>
+          <span  style="margin-left: 30px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.page * indexVM.pageSize}} of {{indexVM.results.hits.total}} Records</span>
           <div layout-align="right center" class="paging disable-large" layout="row" paging
                page="indexVM.page"
                page-size="indexVM.pageSize"
@@ -98,6 +106,10 @@
 
 
           <span flex></span>
+
+
+
+
           <md-button class="md-icon-button toolbar-button disable-small"
                      ng-click="vm.openSidebar('rightsidebar')"
                      aria-label="search filters">
@@ -110,15 +122,14 @@
 
         <md-content layout="row" layout-align="center top">
 
-          <div flex>
+          <div flex class="search-result-body dotted">
             <md-list>
               <md-list-item class="md-3-line" ng-repeat="item in indexVM.results.hits.hits"
                             ng-click="vm.showDetailsDialog($event,item)" layout-wrap>
                 <img ng-src="{{::item._source.domain}}" class="md-avatar" alt="{{::item._source.customerAccountName}}"/>
                 <div class="md-list-item-text">
-                  <h3>{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
+                  <h3 style="color: rgb(0,188,212)">{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
                   </h3>
-                  <hr/>
                   <p ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></p>
                   <p ng-if="!item.highlight"> {{item._source.NPSComment}}</p>
                   <p ng-if="!item.highlight"> {{item._source.suggestionsToImprove}}></p>
@@ -146,6 +157,7 @@
                 </div>
 
               </md-list-item>
+              <md-divider md-inset></md-divider>
 
 
             </md-list>
@@ -157,10 +169,12 @@
           <md-content layout="column" class="content-wrapper md-padding disable-large" flex="30" id="content">
             <div flex>
               <md-content>
-                <eui-checklist field="'surveyMonth'" size="5"></eui-checklist>
+                <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
+                <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
                 <eui-checklist field="'productFamily'" size="5"></eui-checklist>
                 <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
                 <eui-checklist field="'rating'" size="10"></eui-checklist>
+                <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
                 <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
                 <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
                 <eui-checklist field="'customerReference'" size="5"></eui-checklist>

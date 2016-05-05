@@ -40,6 +40,25 @@
 // Dashboard Container
 .dashboard-container {
 
+
+  .search-result-header{
+
+    color: cyan;
+
+  }
+
+
+  .search-result-body.dotteddisabled{
+      padding: 2.25em 1.6875em;
+      background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+      background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+      background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+      background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+      -webkit-background-size: 3px 3px;
+      -moz-background-size: 3px 3px;
+      background-size: 1px 3px;
+  }
+
   .layout-margin {
     margin: 0px;
   }
@@ -63,8 +82,7 @@
   }
 
   md-list-item {
-    background-color: lightgrey;
-    margin-bottom: 5px;
+    border: 1px solid lightgrey;
 
   }
 

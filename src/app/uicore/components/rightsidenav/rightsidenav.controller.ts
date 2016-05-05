@@ -6,88 +6,43 @@
         vm.close = close;
         vm.currentTab = 0;
         vm.notificationGroups = [{
-            name: 'Twitter',
+            name: 'NPS',
             notifications: [{
-                title: 'Mention from oxygenna',
-                icon: 'fa fa-twitter',
+                title: 'New NPS survey response from HMRC',
+                icon: 'fa fa-smile-o',
                 iconColor: '#55acee',
                 date: moment().startOf('hour')
             },{
-                title: 'Oxygenna',
-                icon: 'fa fa-twitter',
-                iconColor: '#55acee',
-                date: moment().startOf('hour')
-            },{
-                title: 'Oxygenna',
-                icon: 'fa fa-twitter',
-                iconColor: '#55acee',
-                date: moment().startOf('hour')
-            },{
-                title: 'Followed by Oxygenna',
-                icon: 'fa fa-twitter',
+                title: 'New NPS survey response from Foot Anstey',
+                icon: 'fa fa-frown-o',
                 iconColor: '#55acee',
                 date: moment().startOf('hour')
             }]
         },{
-            name: 'Server',
+            name: 'Accounts',
             notifications: [{
-                title: 'Server Down',
-                icon: 'zmdi zmdi-alert-circle',
-                iconColor: 'rgb(244, 67, 54)',
-                date: moment().startOf('hour')
-            },{
-                title: 'Slow Response Time',
+                title: 'New Account added to your portfolio',
                 icon: 'zmdi zmdi-alert-triangle',
                 iconColor: 'rgb(255, 152, 0)',
                 date: moment().startOf('hour')
-            },{
-                title: 'Server Down',
-                icon: 'zmdi zmdi-alert-circle',
-                iconColor: 'rgb(244, 67, 54)',
-                date: moment().startOf('hour')
             }]
         },{
-            name: 'Sales',
+            name: 'Dashboard Content',
             notifications: [{
-                title: 'ElasticSlice Admin $21',
-                icon: 'zmdi zmdi-shopping-cart',
+                title: 'New Dashboard NPS created by user Girish Lakshmanan',
+                icon: 'fa-dashboard',
                 iconColor: 'rgb(76, 175, 80)',
                 date: moment().startOf('hour')
             },{
-                title: 'Lambda WordPress $60',
-                icon: 'zmdi zmdi-shopping-cart',
-                iconColor: 'rgb(76, 175, 80)',
-                date: moment().startOf('hour')
-            },{
-                title: 'ElasticSlice Admin $21',
-                icon: 'zmdi zmdi-shopping-cart',
-                iconColor: 'rgb(76, 175, 80)',
-                date: moment().startOf('hour')
-            },{
-                title: 'ElasticSlice Admin $21',
-                icon: 'zmdi zmdi-shopping-cart',
-                iconColor: 'rgb(76, 175, 80)',
-                date: moment().startOf('hour')
-            },{
-                title: 'Lambda WordPress $60',
-                icon: 'zmdi zmdi-shopping-cart',
-                iconColor: 'rgb(76, 175, 80)',
-                date: moment().startOf('hour')
-            },{
-                title: 'ElasticSlice Admin $21',
-                icon: 'zmdi zmdi-shopping-cart',
+                title: 'NPS Dashboard Changed by user Girish Lakshmanan',
+                icon: 'fa-dashboard',
                 iconColor: 'rgb(76, 175, 80)',
                 date: moment().startOf('hour')
             }]
         }];
-        vm.openMail = openMail;
         vm.settingsGroups = [{
             name: 'Account Settings',
             settings: [{
-                title: 'Show my location',
-                icon: 'zmdi zmdi-pin',
-                enabled: true
-            },{
                 title: 'Show my avatar',
                 icon: 'zmdi zmdi-face',
                 enabled: false
@@ -96,52 +51,18 @@
                 icon: 'zmdi zmdi-notifications-active',
                 enabled: true
             }]
-        },{
-            name: 'Chat Settings',
-            settings: [{
-                title: 'Show my username',
-                icon: 'zmdi zmdi-account',
-                enabled: true
-            },{
-                title: 'Make my profile public',
-                icon: 'zmdi zmdi-account-box',
-                enabled: false
-            },{
-                title: 'Allow cloud backups',
-                icon: 'zmdi zmdi-cloud-upload',
-                enabled: true
-            }]
         }];
 
         vm.statisticsGroups = [{
             name: 'User Statistics',
             stats: [{
-                title: 'Storage Space (120/160 Gb)',
+                title: 'Logins this month',
                 mdClass: 'md-primary',
                 value: 60
             },{
-                title: 'Bandwidth Usage (10/100 Gb)',
+                title: 'Reports created this month',
                 mdClass: 'md-accent',
                 value: 10
-            },{
-                title: 'Memory Usage (1/8 Gb)',
-                mdClass: 'md-warn',
-                value: 100
-            }]
-        },{
-            name: 'Server Statistics',
-            stats: [{
-                title: 'Storage Space (120/160 Gb)',
-                mdClass: 'md-primary',
-                value: 60
-            },{
-                title: 'Bandwidth Usage (10/100 Gb)',
-                mdClass: 'md-accent',
-                value: 10
-            },{
-                title: 'Memory Usage (1/8 Gb)',
-                mdClass: 'md-warn',
-                value: 100
             }]
         }];
 

@@ -40,8 +40,8 @@ export default  function routeConfigApp($stateProvider, $urlRouterProvider) {
 
 
     // set default routes when no path specified
-    $urlRouterProvider.when('', '/dashboards/analytics');
-    $urlRouterProvider.when('/', '/dashboards/analytics');
+    $urlRouterProvider.when('', '/dashboards/search');
+    $urlRouterProvider.when('/', '/dashboards/search');
 
     // always goto 404 if route not found
     $urlRouterProvider.otherwise('/404');

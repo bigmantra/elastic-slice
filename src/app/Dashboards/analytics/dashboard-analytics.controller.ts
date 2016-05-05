@@ -25,6 +25,8 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   }
 
 
+  vm.queryType='MatchQuery';
+
 
   this.showDetailsDialog=function(event,item){
 
