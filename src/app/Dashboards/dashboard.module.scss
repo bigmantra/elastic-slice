@@ -1,21 +1,35 @@
 // Dashboard
 
 
-
-@media (min-width:800px) { /* hi-res laptops and desktops */
-
+/* hi-res laptops and desktops */
+@media (min-width:800px) {
   .disable-small{
-
     display:none;
-
+  }
+  md-checkbox{
+    margin-bottom: 3px;
   }
 }
 
-@media only screen and (max-width: 800px){
+@media (max-width:800px) {
   .disable-large{
     display:none;
   }
 }
+
+/* ----------- iPhone 5 and 5S ----------- */
+@media screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .disable-large{
+    display:none;
+  }
+
+}
+
 
 // Dashboard Container
 .dashboard-container {

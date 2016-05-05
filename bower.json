@@ -37,7 +37,8 @@
     "angular-permission": "^2.3.6",
     "elastic.js": "~1.2.0",
     "elasticsearch": "~3.1.1",
-    "material-design-iconfont": "^0.0.2"
+    "material-design-iconfont": "^0.0.2",
+    "angularjs-camelCase-human": "^1.0.0"
   },
   "overrides": {
     "elasticsearch": {

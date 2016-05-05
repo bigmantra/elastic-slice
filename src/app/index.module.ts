@@ -28,7 +28,7 @@ module elasticslice {
   'use strict';
 
   angular.module('elasticslice', ['permission','elasticsearch', 'elasticslice.filters', 'elasticslice.controllers', 'elasticslice.services', 'elasticslice.directives', 'ui.router', 'uicore', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
-      'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
+      'googlechart', 'chart.js', 'linkify','camelCaseToHuman', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
     .value('googleChartApiConfig', googleChartApiConfig)
     .constant('euiHost', 'http://localhost:3000')
     .controller('MainController', MainController)

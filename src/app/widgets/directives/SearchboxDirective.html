@@ -1,37 +1,5 @@
-<!--
-<md-autocomplete
-  eui-query="ejs.MatchQuery('_all', ctrl.searchText)"
-  ng-disabled="ctrl.isDisabled"
-                 md-no-cache="ctrl.noCache"
-                 md-selected-item="ctrl.selectedItem"
-                 md-search-text-change="ctrl.doSearch(ctrl.searchText)"
-                 md-search-text="ctrl.searchText"
-                 md-selected-item-change=""
-                 md-items="item in indexVM.results.hits.hits"
-                 md-item-text=""
-                 md-min-length="0"
-                 placeholder="Search Proteus new">
-  <md-item-template>
-    <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item._source}}</span>
-  </md-item-template>
-  <md-not-found>
-    Nothing matching "{{ctrl.searchText}}" was found.
-  </md-not-found>
-</md-autocomplete>
-
--->
-
-
-<!--
-
-<input type="text" eui-query="ejs.MatchQuery(field, querystring)" ng-model="querystring"
-       eui-enabled="querystring.length"/>
--->
-
-<md-input-container class="md-block">
-  <label for="searchstring" translate>Search...</label>
-
+<md-input-container style="margin-bottom: 1px" layout-align="center center" class="md-block">
+  <label>Search...</label>
   <input type="text" eui-query="ejs.MatchQuery(field, querystring)" ng-model="querystring"
          eui-enabled="querystring.length" name="searchstring"/>
-
 </md-input-container>

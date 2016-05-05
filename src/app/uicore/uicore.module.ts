@@ -10,6 +10,7 @@ import routeProvider from "./router/router.provider";
 import runFunctionRouter from "./router/router.run";
 import routeConfig from "./config.route";
 import settingsProvider from "./settings.provider";
+import TitleCase from "./filters/titlecase.filter";
 
 
 
@@ -27,6 +28,7 @@ export default angular
   .provider('uicoreRoute', routeProvider)
   .run(runFunctionRouter)
   .config(routeConfig)
-  .provider('uicoreSettings', settingsProvider);
+  .provider('uicoreSettings', settingsProvider)
+  .filter('titlecase',TitleCase);
 
 
