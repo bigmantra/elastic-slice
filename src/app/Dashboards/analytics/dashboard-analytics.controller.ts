@@ -3,7 +3,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   $timeout(function () {
     $rootScope.$broadcast('newMailNotification');
     $mdToast.show({
-      template: '<md-toast><span flex>You have new email messages! View them <a href="" ng-click=vm.viewUnread()>here</a></span></md-toast>',
+      template: '<md-toast><span flex>You have new notifications! View them <a href="" ng-click=vm.viewUnread()>here</a></span></md-toast>',
       controller: newMailNotificationController,
       controllerAs: 'vm',
       position: 'bottom right',
@@ -29,8 +29,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
 
   this.showDetailsDialog=function(event,item){
-
-    console.log('called dialog');
 
     $mdDialog.show({
         controller: LoadDataDialogController,

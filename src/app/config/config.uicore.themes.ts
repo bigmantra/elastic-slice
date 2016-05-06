@@ -213,5 +213,5 @@ export default    function themesConfig($mdThemingProvider, uicoreThemingProvide
   /**
    *  SET DEFAULT SKIN
    */
-  uicoreSkinsProvider.setSkin('cyan-cloud');
+  uicoreSkinsProvider.setSkin('battleship-grey');
 }

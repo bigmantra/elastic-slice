@@ -5,5 +5,5 @@ coverage/
 .idea/
 .tmp/
 dist/
-*.js
 backup/
+src/*.js
