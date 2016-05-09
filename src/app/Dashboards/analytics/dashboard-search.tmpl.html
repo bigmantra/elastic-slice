@@ -2,57 +2,11 @@
 
 
   <div class="dashboard-container overlay-10 padded-content-page md-sidenav-push-in-target" layout="column">
-    <!--<div class="drag-container" layout="row" layout-xs="column" layout-margin dragula='"drag-analytics-container"'>
-      <uicore-widget palette-background="deep-orange:500" content-layout="row"
-                     content-layout-align="space-between center"
-                     content-padding>
-        <div>
-          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
-        </div>
-        <div layout="column" layout-align="center end">
-          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="54"
-             decimals="0"></p>
-          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0">Comments</p>
-        </div>
-      </uicore-widget>
-      <uicore-widget palette-background="uicoreCyan:500" content-layout="row"
-                     content-layout-align="space-between center"
-                     content-padding>
-        <div>
-          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-twitter"></md-icon>
-        </div>
-        <div layout="column" layout-align="center end">
-          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="101"
-             decimals="0"></p>
-          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Tweets</p>
-        </div>
-      </uicore-widget>
-      <uicore-widget palette-background="indigo:500" content-layout="row" content-layout-align="space-between center"
-                     content-padding>
-        <div>
-          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
-        </div>
-        <div layout="column" layout-align="center end">
-          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="943" decimals="0"></p>
-          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Likes</p>
-        </div>
-      </uicore-widget>
-      <uicore-widget palette-background="teal:500" content-layout="row" content-layout-align="space-between center"
-                     content-padding>
-        <div>
-          <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
-        </div>
-        <div layout="column" layout-align="center end">
-          <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="944" decimals="0"></p>
-          <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Reach</p>
-        </div>
-      </uicore-widget>
-    </div>-->
 
     <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')"
          eui-enabled="true">
 
-      <div md-theme="cyan" layout="column" layout-margin>
+      <div layout="column" layout-margin>
 
 
         <div layout="row" layout-align="center center">
@@ -78,19 +32,31 @@
 
       <md-content layout="column">
 
-
         <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
           <md-toolbar class="md-theme-light">
             <h1 class="md-toolbar-tools">Filters</h1>
           </md-toolbar>
-          <md-content class="md-padding">
-            <p>This is the right sidebar</p>
+          <md-content class="content-wrapper md-padding"  id="sidenavcontent">
+            <div flex>
+              <md-content>
+                <eui-checklist field="'salesRep'" size="8"></eui-checklist>
+                <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
+                <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
+                <eui-checklist field="'productFamily'" size="5"></eui-checklist>
+                <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
+                <eui-checklist field="'rating'" size="10"></eui-checklist>
+                <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
+                <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
+                <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
+                <eui-checklist field="'customerReference'" size="5"></eui-checklist>
+              </md-content>
+            </div>
           </md-content>
         </md-sidenav>
 
 
 
-        <md-toolbar layout="row" class="md-toolbar-tools" md-theme="cyan">
+        <md-toolbar layout="row" class="md-toolbar-tools">
 
           <h3>Results</h3>
           <span  style="margin-left: 30px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.page * indexVM.pageSize}} of {{indexVM.results.hits.total}} Records</span>
@@ -126,7 +92,7 @@
             <md-list>
               <md-list-item class="md-3-line" ng-repeat="item in indexVM.results.hits.hits"
                             ng-click="vm.showDetailsDialog($event,item)" layout-wrap>
-                <img ng-src="{{::item._source.domain}}" class="md-avatar" alt="{{::item._source.customerAccountName}}"/>
+                <img ng-src="https://logo.clearbit.com/{{::item._source.domain}}" class="md-avatar" alt="{{::item._source.customerAccountName}}"/>
                 <div class="md-list-item-text">
                   <h3 style="color: rgb(0,188,212)">{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
                   </h3>
@@ -169,6 +135,7 @@
           <md-content layout="column" class="content-wrapper md-padding disable-large" flex="30" id="content">
             <div flex>
               <md-content>
+                <eui-checklist field="'salesRep'" size="8"></eui-checklist>
                 <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
                 <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
                 <eui-checklist field="'productFamily'" size="5"></eui-checklist>

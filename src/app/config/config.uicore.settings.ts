@@ -8,6 +8,6 @@ export default    function translateConfig(uicoreSettingsProvider, uicoreRoutePr
   // set current version of app (shown in footer)
   uicoreSettingsProvider.setVersion('0.0.1');
   // set the document title that appears on the browser tab
-  uicoreRouteProvider.setTitle('Elastic Slice');
+  uicoreRouteProvider.setTitle('Proteus');
   uicoreRouteProvider.setSeparator('|');
 }
