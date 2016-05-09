@@ -39,3 +39,6 @@ export default    function permissionRun($rootScope, $cookies, $state, RoleStore
     deniedHandle();
   });
 }
+
+
+permissionRun.$inject=["$rootScope", "$cookies", "$state", "RoleStore", "UserService"];

@@ -47,3 +47,5 @@ export default    function PermissionController($state, $window, $cookies, RoleS
 
   init();
 }
+
+PermissionController.$inject = ["$state", "$window", "$cookies","RoleStore","PermissionStore","UserService", "users"];
