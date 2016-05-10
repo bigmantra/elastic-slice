@@ -1,8 +1,8 @@
 /* @ngInject */
-export default function UserService($q, $http, RoleStore) {
+export default function UserService($q, $http, RoleStore,euiHost) {
   var currentUser = {
-    displayName: 'Girish',
-    username: 'Girish',
+    displayName: 'GirishAA',
+    username: 'GirishAA',
     avatar: 'assets/images/avatars/avatar-5.png',
     roles: ['SUPERADMIN']
   };
@@ -12,6 +12,7 @@ export default function UserService($q, $http, RoleStore) {
     getUsers: getUsers,
     hasPermission: hasPermission,
     login: login
+
   };
 
   return service;
@@ -19,7 +20,11 @@ export default function UserService($q, $http, RoleStore) {
   ///////////////
 
   function getCurrentUser() {
-    return currentUser;
+    
+    return $http({
+      method: 'GET',
+      url: euiHost +  '/user'
+    })
   }
 
   function getUsers() {

@@ -1,7 +1,7 @@
 export default    function permissionRun($rootScope, $cookies, $state, RoleStore, UserService) {
   // normally this would be done at the login page but to show quick
   // demo we grab username from cookie and login the user
-  var cookieUser = $cookies.get('tri-user');
+  var cookieUser = $cookies.get('uicore-user');
   if (angular.isDefined(cookieUser)) {
     UserService.login(cookieUser);
   }

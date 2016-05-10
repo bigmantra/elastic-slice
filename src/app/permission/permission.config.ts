@@ -1,5 +1,5 @@
 /* @ngInject */
-export default    function permissionConfig($stateProvider, triMenuProvider) {
+export default    function permissionConfig($stateProvider, uicoreMenuProvider) {
   $stateProvider
     .state('elasticslice.permission', {
       url: '/permission',
@@ -45,7 +45,7 @@ export default    function permissionConfig($stateProvider, triMenuProvider) {
       }
     });
 
-  triMenuProvider.addMenu({
+  uicoreMenuProvider.addMenu({
     name: 'Permissions',
     icon: 'zmdi zmdi-lock',
     type: 'dropdown',

@@ -14,7 +14,25 @@ export default    function ToolbarController($scope, $injector, $rootScope, $mdM
   vm.isFullScreen = false;
   vm.fullScreenIcon = 'zmdi zmdi-fullscreen';
   vm.toggleFullScreen = toggleFullScreen;
-  vm.currentUser = UserService.getCurrentUser();
+  UserService.getCurrentUser().then(function (payload) {
+      vm.currentUser =
+      {
+        displayName: payload.data.user || 'GUEST',
+        username: payload.data.user || 'GUEST',
+        avatar: 'assets/images/avatars/avatar-5.png',
+        roles: ['SUPERADMIN']
+      }
+
+    },
+    function (errorPayload) {
+      vm.currentUser =
+      {
+        displayName: 'GUEST',
+        username: 'GUEST',
+        avatar: 'assets/images/avatars/avatar-5.png',
+        roles: ['SUPERADMIN']
+      }
+    });
 
   ////////////////
 
