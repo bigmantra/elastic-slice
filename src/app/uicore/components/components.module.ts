@@ -16,8 +16,8 @@ import LeftSidenavController from "./leftsidenav/leftsidenav.controller";
 import RightSidenavController from "./rightsidenav/rightsidenav.controller";
 import DefaultToolbarController from "./toolbar/toolbar.controller";
 import ToolbarController from "./toolbars/toolbar.controller";
-import Pagingfunction from "./paging/paging";
 import sidenavPushIn from "./rightsidenav/pushsidenav.directive";
+
 
 
 export default angular
@@ -40,5 +40,4 @@ export default angular
   .directive('uicoreWizardForm', WizardFormProgress)
   .controller('LeftSidenavController', LeftSidenavController)
   .controller('RightSidenavController', RightSidenavController)
-  .directive('paging',Pagingfunction)
   .directive('sidenavPushIn',sidenavPushIn)

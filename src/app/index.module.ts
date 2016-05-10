@@ -25,12 +25,11 @@ import AppLoaderController from "./layouts/loader/loader.controller";
 declare var angularDragula:any;
 
 module elasticslice {
-  'use strict';
 
   angular.module('elasticslice', ['permission','elasticsearch', 'elasticslice.filters', 'elasticslice.controllers', 'elasticslice.services', 'elasticslice.directives', 'ui.router', 'uicore', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
-      'googlechart', 'chart.js', 'linkify','camelCaseToHuman', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
+      'googlechart', 'chart.js', 'linkify','camelCaseToHuman', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table','angularUtils.directives.dirPagination', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
     .value('googleChartApiConfig', googleChartApiConfig)
-    .constant('euiHost', 'http://localhost:3000')
+    .constant('euiHost', 'http://lngoxfappc061.legal.regn.net:3000/proteus')
     .controller('MainController', MainController)
     .controller('ErrorPageController', ErrorPageController)
     .controller('AppFooterController', AppFooterController)
@@ -42,9 +41,7 @@ module elasticslice {
     .config(configLog)
     .config(routeConfigApp)
     .config(themesConfig)
-    .constant('API_CONFIG', {
-      'url': 'http://triangular-api.oxygenna.com/'
-    });
+;
 
 }
 

@@ -32,7 +32,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
     $mdDialog.show({
         controller: LoadDataDialogController,
-        templateUrl: 'app/Dashboards/analytics/response-details-dialog.tmpl.html',
+        templateUrl: 'app/dashboards/analytics/response-details-dialog.tmpl.html',
         targetEvent: event,
         locals: {
           item: item
@@ -44,6 +44,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
       }, cancelDialog);
 
   }
+
 
   this.openSidebar = function(id) {
     $mdSidenav(id).toggle();

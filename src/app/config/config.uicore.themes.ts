@@ -132,6 +132,7 @@ export default    function themesConfig($mdThemingProvider, uicoreThemingProvide
     .accentPalette('amber')
     .warnPalette('orange');
 
+
   uicoreThemingProvider.theme('white-blue-grey')
     .primaryPalette('white')
     .accentPalette('blue-grey', {
@@ -203,15 +204,36 @@ export default    function themesConfig($mdThemingProvider, uicoreThemingProvide
     .contentTheme('light-green');
 
 
-  /**
-   *  FOR DEMO PURPOSES ALLOW SKIN TO BE SAVED IN A COOKIE
-   *  This overrides any skin set in a call to uicoreSkinsProvider.setSkin if there is a cookie
-   *  REMOVE LINE BELOW FOR PRODUCTION SITE
-   */
-  uicoreSkinsProvider.useSkinCookie(true);
+
+  uicoreThemingProvider.theme('proteus-grey')
+    .primaryPalette('grey',{
+      'default': '700'
+    })
+    .accentPalette('amber')
+    .warnPalette('orange');
+
+
+  uicoreThemingProvider.theme('proteus-red')
+    .primaryPalette('red',{
+      'default': '700'
+    })
+    .accentPalette('amber')
+    .warnPalette('purple');
+
+
+
+  uicoreSkinsProvider.skin('proteus', 'Proteus')
+    .sidebarTheme('proteus-red')
+    .toolbarTheme('proteus-grey')
+    .logoTheme('proteus-grey')
+    .contentTheme('proteus-grey');
+
+
+//  uicoreSkinsProvider.useSkinCookie(true);
+
 
   /**
    *  SET DEFAULT SKIN
    */
-  uicoreSkinsProvider.setSkin('battleship-grey');
+  uicoreSkinsProvider.setSkin('proteus');
 }

@@ -1,6 +1,6 @@
 
     /* @ngInject */
- export default   function RightSidenavController($scope, $http, $mdSidenav, $state, API_CONFIG) {
+ export default   function RightSidenavController($scope, $http, $mdSidenav, $state) {
         var vm = this;
         // sets the current active tab
         vm.close = close;
@@ -74,12 +74,12 @@
         });
 
         // fetch some dummy emails from the API
-        $http({
+/*        $http({
             method: 'GET',
             url: API_CONFIG.url + 'email/inbox'
         }).success(function(data) {
             vm.emails = data.slice(1,20);
-        });
+        });*/
 
         function openMail() {
             $state.go('elasticslice-no-scroll.email.inbox');

@@ -1,5 +1,5 @@
 // Side menu
-tri-menu {
+uicore-menu {
   overflow-y: auto;
   z-index: 1;
   transform: translateZ(0);
@@ -224,7 +224,7 @@ $submenu-overlay: #999999;
     max-height: 64px;
     vertical-align: top;
     margin-right: 4px;
-    transform: translateX(-4px);
+    /*transform: translateX(-4px);*/
   }
 }
 
