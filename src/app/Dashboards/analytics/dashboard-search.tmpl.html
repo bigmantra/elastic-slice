@@ -7,7 +7,6 @@
          eui-enabled="true">
 
       <div layout="column" layout-margin>
-
         <div layout='row' layout-fill layout-margin layout-align='start center'>
           <eui-searchbox flex="80" field="'_all'"></eui-searchbox>
           <md-input-container>
@@ -17,8 +16,6 @@
             </md-select>
           </md-input-container>
         </div>
-
-
       </div>
 
 
@@ -71,7 +68,8 @@
           <div id="searchresultbody" flex class="search-result-body dotted">
 
 
-            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin layout-align='start center' ng-cloak>
+            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
+                 layout-align='start center' ng-cloak>
               <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
                                        template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
               <md-input-container class="disable-large">
@@ -127,12 +125,11 @@
 
             </md-list>
 
-            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin layout-align='start center' ng-cloak="">
+            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
+                 layout-align='center center'>
               <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
                                        template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
             </div>
-
-
 
           </div>
 
