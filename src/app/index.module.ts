@@ -29,7 +29,8 @@ module elasticslice {
   angular.module('elasticslice', ['permission','elasticsearch', 'elasticslice.filters', 'elasticslice.controllers', 'elasticslice.services', 'elasticslice.directives', 'ui.router', 'uicore', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
       'googlechart', 'chart.js', 'linkify','camelCaseToHuman', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table','angularUtils.directives.dirPagination', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
     .value('googleChartApiConfig', googleChartApiConfig)
-    .constant('euiHost', 'http://lngoxfappc061.legal.regn.net:3000/proteus')
+    /*.constant('euiHost', 'http://lngoxfappc061.legal.regn.net:3000/proteus')*/
+    .constant('euiHost', 'http://localhost:9200')
     .controller('MainController', MainController)
     .controller('ErrorPageController', ErrorPageController)
     .controller('AppFooterController', AppFooterController)

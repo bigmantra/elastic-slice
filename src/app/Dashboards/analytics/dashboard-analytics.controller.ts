@@ -1,5 +1,7 @@
 /* @ngInject */
 export default  function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state,$mdDialog,$mdSidenav) {
+
+/*
   $timeout(function () {
     $rootScope.$broadcast('newMailNotification');
     $mdToast.show({
@@ -10,6 +12,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
       hideDelay: 5000
     });
   }, 10000);
+*/
 
   //////////////
 
@@ -20,7 +23,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   function newMailNotificationController() {
     var vm = this;
     vm.viewUnread = function () {
-      $state.go('triangular-no-scroll.email.inbox');
+      $state.go('elasticslice-no-scroll.email.inbox');
     };
   }
 
