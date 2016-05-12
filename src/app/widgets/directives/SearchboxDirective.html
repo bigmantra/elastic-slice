@@ -4,9 +4,8 @@
   <!--<input type="text" eui-query="ejs.MatchQuery(['_all'], querystring).analyzer('english')" ng-model="querystring"
          eui-enabled="querystring.length" name="searchstring"/>-->
 
-  <input type="text" eui-query="ejs.QueryStringQuery ( querystring ).fields (['_all']).analyzer('english')" ng-model="querystring"
+  <input ng-model-options="{ debounce: 500 }" type="text" eui-query="ejs.QueryStringQuery ( querystring ).fields (field).analyzer('english')" ng-model="querystring"
          eui-enabled="querystring.length" name="searchstring"/>
-
 
 
 </md-input-container>

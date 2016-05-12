@@ -11,3 +11,4 @@
 /// <reference path="browser/ambient/karma-jasmine/index.d.ts" />
 /// <reference path="browser/ambient/moment-node/index.d.ts" />
 /// <reference path="browser/ambient/moment/index.d.ts" />
+/// <reference path="browser/definitions/lodash/index.d.ts" />

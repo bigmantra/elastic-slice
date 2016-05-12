@@ -3,18 +3,20 @@
 
   <div class="dashboard-container overlay-10 padded-content-page md-sidenav-push-in-target" layout="column" ng-cloak>
 
-    <div eui-index="'nps'" eui-highlight="ejs.Highlight(['_all']).preTags('<mark>').postTags('</mark>')"
+    <div eui-index="'nps'"
+         eui-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
          eui-enabled="true">
 
       <div layout="column" layout-margin>
         <div layout='row' layout-fill layout-margin layout-align='start center'>
-          <eui-searchbox flex="80" field="['_all']"></eui-searchbox>
-          <md-input-container>
-            <label>Type</label>
-            <md-select ng-model="vm.queryType">
-              <md-option ng-repeat="item in ['MatchQuery','FuzzyQuery', 'WildcardQuery']">{{item}}</md-option>
-            </md-select>
-          </md-input-container>
+          <eui-searchbox flex="80"
+                         field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></eui-searchbox>
+          <!--          <md-input-container>
+                      <label>Type</label>
+                      <md-select ng-model="vm.queryType">
+                        <md-option ng-repeat="item in ['MatchQuery','FuzzyQuery', 'WildcardQuery']">{{item}}</md-option>
+                      </md-select>
+                    </md-input-container>-->
         </div>
       </div>
 
@@ -26,6 +28,7 @@
         <md-content class="content-wrapper md-padding" id="sidenavcontent">
           <div flex>
             <md-content>
+              <eui-checklist field="'suggestionsToImprove'" size="8"></eui-checklist>
               <eui-checklist field="'commentsTerms'" size="8"></eui-checklist>
               <eui-checklist field="'salesRep'" size="8"></eui-checklist>
               <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
@@ -44,9 +47,6 @@
 
 
       <md-content layout="column">
-
-
-
 
         <md-toolbar layout="row" class="md-toolbar-tools">
 
@@ -98,7 +98,11 @@
                 <div class="md-list-item-text">
                   <h3 style="color: rgb(0, 0, 0)">{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
                   </h3>
-                  <p ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></p>
+                  <p ng-if="item.highlight.billingAccountId" ng-bind-html="item.highlight.billingAccountId[0]"></p>
+                  <p ng-if="item.highlight.billingAccountName" ng-bind-html="item.highlight.billingAccountName[0]"></p>
+                  <p ng-if="item.highlight.commentsText" ng-bind-html="'...' + item.highlight.commentsText[0]"></p>
+                  <p ng-if="item.highlight.suggestionsToImproveText"
+                     ng-bind-html="item.highlight.suggestionsToImproveText[0]"></p>
                   <p ng-if="!item.highlight && item._source.commentsText"> {{item._source.commentsText}}</p>
                   <p ng-if="!item.highlight && item._source.suggestionsToImproveText">
                     {{item._source.suggestionsToImproveText}}</p>
