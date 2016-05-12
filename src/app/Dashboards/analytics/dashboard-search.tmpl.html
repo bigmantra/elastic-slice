@@ -8,7 +8,7 @@
 
       <div layout="column" layout-margin>
         <div layout='row' layout-fill layout-margin layout-align='start center'>
-          <eui-searchbox flex="80" field="'_all'"></eui-searchbox>
+          <eui-searchbox flex="80" field="['_all']"></eui-searchbox>
           <md-input-container>
             <label>Type</label>
             <md-select ng-model="vm.queryType">
@@ -19,30 +19,33 @@
       </div>
 
 
+      <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">Filters</h1>
+        </md-toolbar>
+        <md-content class="content-wrapper md-padding" id="sidenavcontent">
+          <div flex>
+            <md-content>
+              <eui-checklist field="'commentsTerms'" size="8"></eui-checklist>
+              <eui-checklist field="'salesRep'" size="8"></eui-checklist>
+              <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
+              <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
+              <eui-checklist field="'productFamily'" size="5"></eui-checklist>
+              <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
+              <eui-checklist field="'rating'" size="10"></eui-checklist>
+              <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
+              <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
+              <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
+              <eui-checklist field="'customerReference'" size="5"></eui-checklist>
+            </md-content>
+          </div>
+        </md-content>
+      </md-sidenav>
+
+
       <md-content layout="column">
 
-        <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
-          <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Filters</h1>
-          </md-toolbar>
-          <md-content class="content-wrapper md-padding" id="sidenavcontent">
-            <div flex>
-              <md-content>
-                <eui-checklist field="'NPSComment'" size="8"></eui-checklist>
-                <eui-checklist field="'salesRep'" size="8"></eui-checklist>
-                <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
-                <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
-                <eui-checklist field="'productFamily'" size="5"></eui-checklist>
-                <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
-                <eui-checklist field="'rating'" size="10"></eui-checklist>
-                <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
-                <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
-                <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
-                <eui-checklist field="'customerReference'" size="5"></eui-checklist>
-              </md-content>
-            </div>
-          </md-content>
-        </md-sidenav>
+
 
 
         <md-toolbar layout="row" class="md-toolbar-tools">
@@ -51,7 +54,7 @@
           <span ng-if="indexVM.results.hits.total" style="margin-left: 30px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
 
 
-          <span flex="50"></span>
+          <span flex="5"></span>
 
 
           <md-button class="md-icon-button toolbar-button disable-small"
@@ -96,9 +99,9 @@
                   <h3 style="color: rgb(0, 0, 0)">{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
                   </h3>
                   <p ng-if="item.highlight" ng-bind-html="'....' + item.highlight._all[0]"></p>
-                  <p ng-if="!item.highlight && item._source.NPSComment"> {{item._source.NPSComment}}</p>
-                  <p ng-if="!item.highlight && item._source.suggestionsToImprove">
-                    {{item._source.suggestionsToImprove}}</p>
+                  <p ng-if="!item.highlight && item._source.commentsText"> {{item._source.commentsText}}</p>
+                  <p ng-if="!item.highlight && item._source.suggestionsToImproveText">
+                    {{item._source.suggestionsToImproveText}}</p>
                 </div>
 
                 <div>
@@ -135,11 +138,11 @@
           </div>
 
 
-          <md-content layout="column" class="content-wrapper md-padding disable-large" flex="30" id="content">
+          <md-content layout="column" class="content-wrapper md-padding disable-large" flex="35" id="content">
             <div flex>
               <md-content>
-                <eui-checklist field="'suggestionsToImprove'" size="8"></eui-checklist>
-                <eui-checklist field="'NPSComment'" size="8"></eui-checklist>
+                <eui-checklist field="'suggestionsToImprove'" size="20"></eui-checklist>
+                <eui-checklist field="'commentsTerms'" size="20"></eui-checklist>
                 <eui-checklist field="'salesRep'" size="8"></eui-checklist>
                 <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
                 <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>

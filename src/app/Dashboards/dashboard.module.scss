@@ -5,15 +5,20 @@
   .disable-small {
     display: none;
   }
-  md-checkbox {
+
+  .es-search-facet-checklist{
+
+    min-width: 120px;
     margin-bottom: 3px;
+
   }
 
-  md-checkbox span {
+  .es-search-facet-checklist span {
 
     font-size: 12px;
 
   }
+
   md-toolbar h4 {
 
     font-size: 16px;
@@ -45,7 +50,6 @@
     margin: 0px 0;
 
   }
-
 
   .search-result-body.dotteddisabled{
       padding: 2.25em 1.6875em;

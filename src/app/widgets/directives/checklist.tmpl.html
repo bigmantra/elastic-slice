@@ -3,8 +3,8 @@
     <h4 style="max-height:30px">{{field | camelCaseToHuman | titlecase}}</h4>
   </md-toolbar>
   <md-content>
-    <md-input-container class="md-block">
-      <md-checkbox class="md-primary" ng-repeat="bucket in aggResult.buckets"
+    <md-input-container class="md-block"  >
+      <md-checkbox class="md-primary es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
                    eui-filter="ejs.TermsFilter(field, bucket.key)" ng-model="filter.enabled"
                    aria-label="Primary Checkbox">
         {{bucket.key}} ({{bucket.doc_count}})
@@ -12,7 +12,6 @@
     </md-input-container>
     <md-button class="md-default md-raised" ng-click="size=size+5">Show More</md-button>
   </md-content>
-
 
     <md-divider></md-divider>
 
