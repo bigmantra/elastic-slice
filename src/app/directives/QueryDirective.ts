@@ -6,12 +6,12 @@ export class QueryDirective {
     directive.restrict = 'A';
     directive.scope = true;
     directive.controller = QueryController;
-    directive.require = ['euiQuery'];
+    directive.require = ['eslQuery'];
 
 
 
     directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, controllers:any) {
-      scope.$watch(element.attr('eui-query') + " | euiCached", (val:any) => {
+      scope.$watch(element.attr('esl-query') + " | eslCached", (val:any) => {
 
         scope.query.query = val
 
@@ -19,7 +19,7 @@ export class QueryDirective {
       );
 
       var enabled = false;
-      var enabledAttr = element.attr('eui-enabled');
+      var enabledAttr = element.attr('esl-enabled');
       if (enabledAttr) {
         scope.$watch(enabledAttr, (val:any) => scope.query.enabled = val);
         enabled = scope.$eval(enabledAttr);
@@ -27,7 +27,7 @@ export class QueryDirective {
 
 
       scope.query = {
-        query: scope.$eval(element.attr('eui-query') + " | euiCached"),
+        query: scope.$eval(element.attr('esl-query') + " | eslCached"),
         enabled: enabled
 
       };

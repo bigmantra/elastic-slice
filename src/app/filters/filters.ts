@@ -7,12 +7,12 @@ import {TimestampFilter} from './TimestampFilter'
 
 
 export default angular.module('elasticslice.filters', [])
-  .filter('euiMap', MapFilter)
-  .filter('euiCached', CachedFilter)
-  .filter('euiRound', RoundFilter)
-  .filter('euiPageRange', PageRangeFilter)
-  .filter('euiRange', RangeFilter)
-  .filter('euiTimestamp', TimestampFilter);
+  .filter('eslMap', MapFilter)
+  .filter('eslCached', CachedFilter)
+  .filter('eslRound', RoundFilter)
+  .filter('eslPageRange', PageRangeFilter)
+  .filter('eslRange', RangeFilter)
+  .filter('eslTimestamp', TimestampFilter);
 ;
 
 

@@ -5,10 +5,10 @@
         private esFactory:any;
         private host:any;
 
-        static $inject = ['esFactory', 'euiHost'];
-        constructor(esFactory:any, euiHost:any) {
+        static $inject = ['esFactory', 'eslHost'];
+        constructor(esFactory:any, eslHost:any) {
             this.esFactory = esFactory;
-            this.setHost(euiHost);
+            this.setHost(eslHost);
         }
 
         public setHost(host:any) {

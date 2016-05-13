@@ -1,5 +1,5 @@
 /* @ngInject */
-export default function UserService($q, $http, RoleStore,euiHost) {
+export default function UserService($q, $http, RoleStore,eslHost) {
   var currentUser = {
     displayName: 'GirishAA',
     username: 'GirishAA',
@@ -23,7 +23,7 @@ export default function UserService($q, $http, RoleStore,euiHost) {
     
     return $http({
       method: 'GET',
-      url: euiHost +  '/user'
+      url: eslHost +  '/user'
     })
   }
 

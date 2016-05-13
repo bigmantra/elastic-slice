@@ -7,10 +7,10 @@ export class IndexDirective {
 
     directive.controller = IndexController;
     directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, indexCtrl:IndexController) {
-      scope.$watch(attrs.euiIndex, (val:any) => {
+      scope.$watch(attrs.eslIndex, (val:any) => {
         indexCtrl.indexVM.index = val;
       });
-      indexCtrl.indexVM.index = scope.$eval(attrs.euiIndex);
+      indexCtrl.indexVM.index = scope.$eval(attrs.eslIndex);
     }
     return directive;
   }

@@ -3,14 +3,14 @@
 
   <div class="dashboard-container overlay-10 padded-content-page md-sidenav-push-in-target" layout="column" ng-cloak>
 
-    <div eui-index="'nps'"
-         eui-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
-         eui-enabled="true">
+    <div esl-index="'nps'"
+         esl-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
+         esl-enabled="true">
 
       <div layout="column" layout-margin>
         <div layout='row' layout-fill layout-margin layout-align='start center'>
-          <eui-searchbox flex="80"
-                         field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></eui-searchbox>
+          <esl-searchbox flex="80"
+                         field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></esl-searchbox>
           <!--          <md-input-container>
                       <label>Type</label>
                       <md-select ng-model="vm.queryType">
@@ -28,18 +28,18 @@
         <md-content class="content-wrapper md-padding" id="sidenavcontent">
           <div flex>
             <md-content>
-              <eui-checklist field="'suggestionsToImprove'" size="8"></eui-checklist>
-              <eui-checklist field="'commentsTerms'" size="8"></eui-checklist>
-              <eui-checklist field="'salesRep'" size="8"></eui-checklist>
-              <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
-              <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
-              <eui-checklist field="'productFamily'" size="5"></eui-checklist>
-              <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
-              <eui-checklist field="'rating'" size="10"></eui-checklist>
-              <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
-              <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
-              <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
-              <eui-checklist field="'customerReference'" size="5"></eui-checklist>
+              <esl-checklist field="'suggestionsToImprove'" size="8"></esl-checklist>
+              <esl-checklist field="'commentsTerms'" size="8"></esl-checklist>
+              <esl-checklist field="'salesRep'" size="8"></esl-checklist>
+              <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
+              <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
+              <esl-checklist field="'productFamily'" size="5"></esl-checklist>
+              <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
+              <esl-checklist field="'rating'" size="10"></esl-checklist>
+              <esl-checklist field="'customerAccountName.raw'" size="10"></esl-checklist>
+              <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
+              <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
+              <esl-checklist field="'customerReference'" size="5"></esl-checklist>
             </md-content>
           </div>
         </md-content>
@@ -145,18 +145,18 @@
           <md-content layout="column" class="content-wrapper md-padding disable-large" flex="35" id="content">
             <div flex>
               <md-content>
-                <eui-checklist field="'suggestionsToImprove'" size="20"></eui-checklist>
-                <eui-checklist field="'commentsTerms'" size="20"></eui-checklist>
-                <eui-checklist field="'salesRep'" size="8"></eui-checklist>
-                <eui-checklist field="'surveyYear'" size="8"></eui-checklist>
-                <eui-checklist field="'surveyMonth'" size="12"></eui-checklist>
-                <eui-checklist field="'productFamily'" size="5"></eui-checklist>
-                <eui-checklist field="'practiceArea'" size="5"></eui-checklist>
-                <eui-checklist field="'rating'" size="10"></eui-checklist>
-                <eui-checklist field="'customerAccountName.raw'" size="10"></eui-checklist>
-                <eui-checklist field="'decisionLevel'" size="5"></eui-checklist>
-                <eui-checklist field="'continuedUse'" size="5"></eui-checklist>
-                <eui-checklist field="'customerReference'" size="5"></eui-checklist>
+                <esl-checklist field="'suggestionsToImprove'" size="20"></esl-checklist>
+                <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
+                <esl-checklist field="'salesRep'" size="8"></esl-checklist>
+                <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
+                <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
+                <esl-checklist field="'productFamily'" size="5"></esl-checklist>
+                <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
+                <esl-checklist field="'rating'" size="10"></esl-checklist>
+                <esl-checklist field="'customerAccountName.raw'" size="10"></esl-checklist>
+                <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
+                <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
+                <esl-checklist field="'customerReference'" size="5"></esl-checklist>
               </md-content>
             </div>
           </md-content>

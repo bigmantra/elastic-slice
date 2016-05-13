@@ -125,7 +125,7 @@ export class IndexController {
   private refreshPromise:any = null;
 
   private onError(err:any) {
-    this.$rootScope.$broadcast('eui-search-error', err);
+    this.$rootScope.$broadcast('esl-search-error', err);
     this.indexVM.error = err;
   }
 

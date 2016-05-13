@@ -9,13 +9,13 @@
             
             directive.link = <any>{
                 pre: function (scope:any, element:ng.IAugmentedJQuery, attrs: any) {
-                    var key = element.attr('eui-key');
-                    scope.$watch(element.attr('eui-value'), (newVal:any, oldVal:any) => {
+                    var key = element.attr('esl-key');
+                    scope.$watch(element.attr('esl-value'), (newVal:any, oldVal:any) => {
                         if (!angular.equals(newVal, oldVal)) {
                             scope[key] = newVal;
                         }
                     }, true);
-                    scope[key] = scope.$eval(element.attr('eui-value'));
+                    scope[key] = scope.$eval(element.attr('esl-value'));
                 }
             }
             return directive;

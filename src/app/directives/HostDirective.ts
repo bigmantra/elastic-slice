@@ -7,9 +7,9 @@
 
             directive.controller = HostController;
             directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs: any, hostCtrl:any) {
-                scope.$watch(element.attr('eui-host'), (val:any) => scope.host = val);
+                scope.$watch(element.attr('esl-host'), (val:any) => scope.host = val);
 
-                scope.host = scope.$eval(element.attr('eui-host'));
+                scope.host = scope.$eval(element.attr('esl-host'));
 
                 hostCtrl.init();
             }

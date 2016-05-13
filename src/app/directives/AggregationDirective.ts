@@ -9,17 +9,17 @@
 
             directive.controller = AggregationController;
             directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs: any, aggCtrl:any) {
-                scope.$watch(element.attr('eui-aggregation') + " | euiCached", (val:any) => scope.aggregation.agg = val);
+                scope.$watch(element.attr('esl-aggregation') + " | eslCached", (val:any) => scope.aggregation.agg = val);
 
                 var filterSelf = true;
-                var filterSelfAttr = element.attr('eui-filter-self');
+                var filterSelfAttr = element.attr('esl-filter-self');
                 if (filterSelfAttr) {
                     scope.$watch(filterSelfAttr, (val:any) => scope.aggregation.filterSelf = val);
                     filterSelf = scope.$eval(filterSelfAttr);
                 }
 
                 scope.aggregation = {
-                    agg: scope.$eval(element.attr('eui-aggregation') + " | euiCached"),
+                    agg: scope.$eval(element.attr('esl-aggregation') + " | eslCached"),
                     filterSelf: filterSelf
                 };
 

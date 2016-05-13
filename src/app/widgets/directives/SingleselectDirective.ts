@@ -18,9 +18,9 @@ import {Widgets} from "./directives";
             }
 
             directive.template = '\
-            <ul class="nav nav-list" eui-aggregation="ejs.TermsAggregation(agg_name).field(field).size(size)">\
+            <ul class="nav nav-list" esl-aggregation="ejs.TermsAggregation(agg_name).field(field).size(size)">\
                 <li ng-repeat="bucket in aggResult.buckets">\
-                    <label eui-filter="ejs.TermsFilter(field, bucket.key)">\
+                    <label esl-filter="ejs.TermsFilter(field, bucket.key)">\
                         <span ng-if="!filter.enabled"><a href="" ng-click="filter.enabled=true">{{bucket.key}} <span class="muted">({{bucket.doc_count}})</span></a></span>\
                         <span ng-if="filter.enabled">{{bucket.key}} <a href="" ng-click="filter.enabled=false" class="facet-remove">x</a></span>\
                     </label>\

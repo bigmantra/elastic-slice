@@ -24,7 +24,7 @@ export class SearchboxDirective {
 
     // TODO: should be debounced
     /*directive.template = '\
-            <input type="text" eui-query="ejs.MatchQuery(field, querystring)" ng-model="querystring" eui-enabled="querystring.length" />\
+            <input type="text" esl-query="ejs.MatchQuery(field, querystring)" ng-model="querystring" esl-enabled="querystring.length" />\
             ';
 */
     directive.templateUrl ='app/widgets/directives/SearchboxDirective.html';

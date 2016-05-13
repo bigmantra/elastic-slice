@@ -8,17 +8,17 @@ export class SortDirective {
 
     directive.controller = SortController;
     directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, sortCtrl:any) {
-      scope.$watch(element.attr('eui-sort') + " | euiCached", (val:any) => scope.sorting.sort = val);
+      scope.$watch(element.attr('esl-sort') + " | eslCached", (val:any) => scope.sorting.sort = val);
 
       var enabled = false;
-      var enabledAttr = element.attr('eui-enabled');
+      var enabledAttr = element.attr('esl-enabled');
       if (enabledAttr) {
         scope.$watch(enabledAttr, (val:any) => scope.sorting.enabled = val);
         enabled = scope.$eval(enabledAttr);
       }
 
       scope.sorting = {
-        sort: scope.$eval(element.attr('eui-sort') + " | euiCached"),
+        sort: scope.$eval(element.attr('esl-sort') + " | eslCached"),
         enabled: enabled
       };
 

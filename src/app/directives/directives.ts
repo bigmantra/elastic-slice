@@ -15,19 +15,19 @@ import {SimplePagingDirective} from "../widgets/directives/SimplePagingDirective
 
 
 export default angular.module('elasticslice.directives', [])
-  .directive('euiAggregation', [AggregationDirective])
-  .directive('euiFilter', [FilterDirective])
-  .directive('euiHighlight', [HighlightDirective])
-  .directive('euiHost', [HostDirective])
-  .directive('euiIndex', [IndexDirective])
-  .directive('euiInverted', [InvertedDirective])
-  .directive('euiOrFilter', [OrFilterDirective])
-  .directive('euiQuery', [QueryDirective])
-  .directive('euiSort', [SortDirective])
-  .directive('euiVar', [VarDirective])
-  .directive('euiChecklist', ['$parse',ChecklistDirective])
-  .directive('euiSearchbox', ['$parse',SearchboxDirective])
-  .directive('euiSingleselect', ['$parse',SingleselectDirective])
-  .directive('euiSimplePaging', ['$parse',SimplePagingDirective]);
+  .directive('eslAggregation', [AggregationDirective])
+  .directive('eslFilter', [FilterDirective])
+  .directive('eslHighlight', [HighlightDirective])
+  .directive('eslHost', [HostDirective])
+  .directive('eslIndex', [IndexDirective])
+  .directive('eslInverted', [InvertedDirective])
+  .directive('eslOrFilter', [OrFilterDirective])
+  .directive('eslQuery', [QueryDirective])
+  .directive('eslSort', [SortDirective])
+  .directive('eslVar', [VarDirective])
+  .directive('eslChecklist', ['$parse',ChecklistDirective])
+  .directive('eslSearchbox', ['$parse',SearchboxDirective])
+  .directive('eslSingleselect', ['$parse',SingleselectDirective])
+  .directive('eslSimplePaging', ['$parse',SimplePagingDirective]);
 
 ;
