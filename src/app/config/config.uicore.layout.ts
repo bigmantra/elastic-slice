@@ -2,6 +2,7 @@
 export default    function configLayout(uicoreLayoutProvider) {
   // set app templates (all in app/layouts folder so you can tailor them to your needs)
 
+
   // loader screen HTML & controller
   uicoreLayoutProvider.setDefaultOption('loaderTemplateUrl', 'app/layouts/loader/loader.tmpl.html');
   uicoreLayoutProvider.setDefaultOption('loaderController', 'AppLoaderController');
@@ -35,6 +36,8 @@ export default    function configLayout(uicoreLayoutProvider) {
   uicoreLayoutProvider.setDefaultOption('sideMenuSize', 'full');
 
   uicoreLayoutProvider.setDefaultOption('showToolbar', true);
+
+  uicoreLayoutProvider.setDefaultOption('showLeftSideNav', true);
 
   uicoreLayoutProvider.setDefaultOption('footer', true);
 }

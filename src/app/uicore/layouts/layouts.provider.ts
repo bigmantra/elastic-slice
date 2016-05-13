@@ -8,6 +8,7 @@ export function layoutProvider() {
     innerContentClass: '',
     sideMenuSize: 'full',
     showToolbar: true,
+    showLeftSideNav:true,
     footer: true,
     contentTemplateUrl: 'app/uicore/layouts/default/default-content.tmpl.html',
     sidebarLeftTemplateUrl: 'app/uicore/components/menu/menu.tmpl.html',
@@ -18,7 +19,7 @@ export function layoutProvider() {
     toolbarController: 'DefaultToolbarController',
     footerTemplateUrl: 'app/uicore/components/footer/footer.tmpl.html'
   };
-  var resetableOptions = ['toolbarSize', 'toolbarShrink', 'toolbarClass', 'contentClass', 'innerContentClass', 'sideMenuSize', 'showToolbar', 'footer', 'contentTemplateUrl', 'sidebarLeftTemplateUrl', 'sidebarLeftController', 'sidebarRightTemplateUrl', 'sidebarRightController', 'toolbarTemplateUrl', 'toolbarController', 'footerTemplateUrl', 'loaderTemplateUrl', 'loaderController'];
+  var resetableOptions = ['toolbarSize', 'toolbarShrink', 'toolbarClass', 'contentClass', 'innerContentClass', 'sideMenuSize', 'showToolbar','showLeftSideNav' ,'footer', 'contentTemplateUrl', 'sidebarLeftTemplateUrl', 'sidebarLeftController', 'sidebarRightTemplateUrl', 'sidebarRightController', 'toolbarTemplateUrl', 'toolbarController', 'footerTemplateUrl', 'loaderTemplateUrl', 'loaderController'];
   var layout = {};
 
   this.getDefaultOption = getDefaultOption;

@@ -11,23 +11,15 @@
         <div layout='row' layout-fill layout-margin layout-align='start center'>
           <esl-searchbox flex="80"
                          field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></esl-searchbox>
-          <!--          <md-input-container>
-                      <label>Type</label>
-                      <md-select ng-model="vm.queryType">
-                        <md-option ng-repeat="item in ['MatchQuery','FuzzyQuery', 'WildcardQuery']">{{item}}</md-option>
-                      </md-select>
-                    </md-input-container>-->
+
         </div>
       </div>
-
 
       <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
         <md-toolbar class="md-theme-light">
           <h1 class="md-toolbar-tools">Filters</h1>
         </md-toolbar>
         <md-content class="content-wrapper md-padding" id="sidenavcontent">
-          <div flex>
-            <md-content>
               <esl-checklist field="'suggestionsToImprove'" size="8"></esl-checklist>
               <esl-checklist field="'commentsTerms'" size="8"></esl-checklist>
               <esl-checklist field="'salesRep'" size="8"></esl-checklist>
@@ -40,30 +32,10 @@
               <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
               <esl-checklist field="'customerReference'" size="5"></esl-checklist>
             </md-content>
-          </div>
-        </md-content>
       </md-sidenav>
-
 
       <md-content layout="column">
 
-        <md-toolbar layout="row" class="md-toolbar-tools">
-
-          <h3>Results</h3>
-          <span ng-if="indexVM.results.hits.total" style="margin-left: 30px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
-
-
-          <span flex="5"></span>
-
-
-          <md-button class="md-icon-button toolbar-button disable-small"
-                     ng-click="vm.openSidebar('rightsidebar')"
-                     aria-label="search filters">
-            <md-icon md-font-icon="fa fa-filter"></md-icon>
-          </md-button>
-
-
-        </md-toolbar>
 
 
         <md-content layout="row" layout-align="center top">
@@ -132,18 +104,11 @@
 
             </md-list>
 
-            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
-                 layout-align='center center'>
-              <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
-                                       template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
-            </div>
 
           </div>
 
 
-          <md-content layout="column" class="content-wrapper md-padding disable-large" flex="35" id="content">
-            <div flex>
-              <md-content>
+          <md-content layout="column" class="content-wrapper md-padding disable-large" flex="30" id="content">
                 <esl-checklist field="'suggestionsToImprove'" size="20"></esl-checklist>
                 <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
                 <esl-checklist field="'salesRep'" size="8"></esl-checklist>
@@ -156,8 +121,6 @@
                 <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
                 <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
                 <esl-checklist field="'customerReference'" size="5"></esl-checklist>
-              </md-content>
-            </div>
           </md-content>
 
 
