@@ -4,7 +4,7 @@
   </md-toolbar>
   <md-content>
     <md-input-container class="md-block"  >
-      <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
+        <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
                    esl-filter="ejs.TermsFilter(field, bucket.key)" ng-model="filter.enabled"
                    aria-label="Primary Checkbox">
         {{bucket.key}} ({{bucket.doc_count}})

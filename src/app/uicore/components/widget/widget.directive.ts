@@ -19,7 +19,8 @@ export default  function widget($mdTheming) {
     scope: {
       title: '@',
       subtitle: '@',
-      avatar: '@'
+      avatar: '@',
+      data:'='
     },
     bindToController: true,
     controller: Controller,

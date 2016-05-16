@@ -15,7 +15,7 @@
       </md-content>
 
 
-      <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
+      <md-sidenav ng-if="showMobileFilters" flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
         <md-toolbar class="md-theme-light">
           <h1 class="md-toolbar-tools">Filters</h1>
         </md-toolbar>
@@ -51,16 +51,11 @@
 
           </div>
 
-          <div layout="column" layout-margin>
-            <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="11/03/15 - 11/4/15" content-layout="row" content-padding>
-              <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
-            </uicore-widget>
-<!--            <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle="11/03/15 - 11/4/15" content-padding>
-              <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true" chart-labels="pieChart.labels"></canvas>
-            </uicore-widget>-->
-          </div>
 
         </md-content>
+
+
+
         <md-content layout="row" layout-align="center top">
 
           <div flex layout-margin>
@@ -78,6 +73,26 @@
             <div ng-if="!indexVM.results.hits.total" layout='row' layout-fill layout-margin layout-align='start center'>
               <span>No results containing all your search terms were found</span>
             </div>
+
+            <div layout-margin>
+              <div esl-or-filter esl-filter-self="false" esl-aggregation="ejs.TermsAggregation('chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.AvgAggregation (agg_name + '_avg').field('rating'))"  >
+
+                <md-input-container >
+                  <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
+                               esl-filter="ejs.TermsFilter('surveyYear', bucket.key)" ng-model="filter.enabled"
+                               aria-label="Primary Checkbox">
+                    {{bucket.key}} ({{bucket.doc_count}})
+                  </md-checkbox>
+                </md-input-container>
+
+                <uicore-widget data="aggResult" chartjs-line-widget title="Trend" subtitle="11/03/15 - 11/4/15" content-layout="row" content-padding>
+                  <canvas class="chart-line" chart-click="onClick" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
+                </uicore-widget>
+
+              </div>
+            </div>
+
+
             <md-list>
               <md-list-item class="md-3-line"
                             dir-paginate="item in indexVM.results.hits.hits | itemsPerPage: indexVM.pageSize"
