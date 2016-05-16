@@ -7,70 +7,63 @@
          esl-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
          esl-enabled="true">
 
-      <div layout="column" layout-margin>
+      <md-content layout="column" layout-margin>
         <div layout='row' layout-fill layout-margin layout-align='start center'>
           <esl-searchbox flex="80"
                          field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></esl-searchbox>
-          <!--          <md-input-container>
-                      <label>Type</label>
-                      <md-select ng-model="vm.queryType">
-                        <md-option ng-repeat="item in ['MatchQuery','FuzzyQuery', 'WildcardQuery']">{{item}}</md-option>
-                      </md-select>
-                    </md-input-container>-->
         </div>
-      </div>
+      </md-content>
 
 
       <md-sidenav flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
         <md-toolbar class="md-theme-light">
           <h1 class="md-toolbar-tools">Filters</h1>
         </md-toolbar>
-        <md-content class="content-wrapper md-padding" id="sidenavcontent">
-          <div flex>
-            <md-content>
-              <esl-checklist field="'suggestionsToImprove'" size="8"></esl-checklist>
-              <esl-checklist field="'commentsTerms'" size="8"></esl-checklist>
-              <esl-checklist field="'salesRep'" size="8"></esl-checklist>
-              <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
-              <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
-              <esl-checklist field="'productFamily'" size="5"></esl-checklist>
-              <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
-              <esl-checklist field="'rating'" size="10"></esl-checklist>
-              <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
-              <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
-              <esl-checklist field="'customerReference'" size="5"></esl-checklist>
-            </md-content>
-          </div>
-        </md-content>
+        <div class="content-wrapper md-padding" id="sidenavcontent">
+          <md-content>
+            <esl-checklist field="'suggestionsToImprove'" size="8"></esl-checklist>
+            <esl-checklist field="'commentsTerms'" size="8"></esl-checklist>
+            <esl-checklist field="'salesRep'" size="8"></esl-checklist>
+            <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
+            <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
+            <esl-checklist field="'productFamily'" size="5"></esl-checklist>
+            <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
+            <esl-checklist field="'rating'" size="10"></esl-checklist>
+            <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
+            <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
+            <esl-checklist field="'customerReference'" size="5"></esl-checklist>
+          </md-content>
+        </div>
       </md-sidenav>
 
 
       <md-content layout="column">
+        <md-content layout="row" layout-align='start center'>
+          <div layout="row">
+            <span ng-if="indexVM.results.hits.total" style="margin-left: 12px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
+            <span flex></span>
 
-        <md-toolbar layout="row" class="md-toolbar-tools">
+            <md-button layout-align="end center" class="md-icon-button toolbar-button disable-small"
+                       ng-click="vm.openSidebar('rightsidebar')"
+                       aria-label="search filters">
+              <md-icon md-font-icon="fa fa-filter"></md-icon>
+            </md-button>
 
-          <h3>Results</h3>
-          <span ng-if="indexVM.results.hits.total" style="margin-left: 30px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
+          </div>
 
+          <div layout="column" layout-margin>
+            <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="11/03/15 - 11/4/15" content-layout="row" content-padding>
+              <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
+            </uicore-widget>
+<!--            <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle="11/03/15 - 11/4/15" content-padding>
+              <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true" chart-labels="pieChart.labels"></canvas>
+            </uicore-widget>-->
+          </div>
 
-          <span flex="5"></span>
-
-
-          <md-button class="md-icon-button toolbar-button disable-small"
-                     ng-click="vm.openSidebar('rightsidebar')"
-                     aria-label="search filters">
-            <md-icon md-font-icon="fa fa-filter"></md-icon>
-          </md-button>
-
-
-        </md-toolbar>
-
-
+        </md-content>
         <md-content layout="row" layout-align="center top">
 
-          <div id="searchresultbody" flex class="search-result-body dotted">
-
-
+          <div flex layout-margin>
             <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
                  layout-align='start center' ng-cloak>
               <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
@@ -82,11 +75,9 @@
                 </md-select>
               </md-input-container>
             </div>
-
             <div ng-if="!indexVM.results.hits.total" layout='row' layout-fill layout-margin layout-align='start center'>
               <span>No results containing all your search terms were found</span>
             </div>
-
             <md-list>
               <md-list-item class="md-3-line"
                             dir-paginate="item in indexVM.results.hits.hits | itemsPerPage: indexVM.pageSize"
@@ -139,31 +130,25 @@
             </div>
 
           </div>
+          <div flex="33" class="content-wrapper md-padding disable-large">
+            <esl-checklist field="'suggestionsToImprove'" size="20"></esl-checklist>
+            <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
+            <esl-checklist field="'salesRep'" size="8"></esl-checklist>
+            <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
+            <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
+            <esl-checklist field="'productFamily'" size="5"></esl-checklist>
+            <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
+            <esl-checklist field="'rating'" size="10"></esl-checklist>
+            <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
+            <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
+            <esl-checklist field="'customerReference'" size="5"></esl-checklist>
+          </div>
 
-
-          <md-content layout="column" class="content-wrapper md-padding disable-large" flex="35" id="content">
-            <div flex>
-              <md-content>
-                <esl-checklist field="'suggestionsToImprove'" size="20"></esl-checklist>
-                <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
-                <esl-checklist field="'salesRep'" size="8"></esl-checklist>
-                <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
-                <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
-                <esl-checklist field="'productFamily'" size="5"></esl-checklist>
-                <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
-                <esl-checklist field="'rating'" size="10"></esl-checklist>
-                <esl-checklist field="'customerAccountName.raw'" size="10"></esl-checklist>
-                <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
-                <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
-                <esl-checklist field="'customerReference'" size="5"></esl-checklist>
-              </md-content>
-            </div>
-          </md-content>
+        </md-content>
 
 
     </div>
 
 
-  </div>
   </div>
 </md-content>

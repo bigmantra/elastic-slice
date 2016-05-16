@@ -9,17 +9,22 @@ export default    function chartjsLineWidget($timeout, $interval) {
         var directive = {
             require: 'uicoreWidget',
             link: link,
-            restrict: 'A'
+            restrict: 'A',
+            
         };
         return directive;
 
         function link($scope, $element, attrs, widgetCtrl) {
             widgetCtrl.setLoading(true);
 
+
+
             $timeout(function() {
                 widgetCtrl.setLoading(false);
                 randomData();
             }, 1500);
+
+          console.log($scope.indexVM.aggResult);
 
             widgetCtrl.setMenu({
                 icon: 'zmdi zmdi-more-vert',
@@ -42,6 +47,10 @@ export default    function chartjsLineWidget($timeout, $interval) {
                     title: 'Print'
                 }]
             });
+
+
+
+
 
             $scope.lineChart = {
                 labels: ['Dec-15', 'Jan-16', 'Feb-16', 'Mar-16', 'April-16'],

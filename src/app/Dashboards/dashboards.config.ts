@@ -4,15 +4,9 @@ export default    function moduleConfig($stateProvider, uicoreMenuProvider) {
   $stateProvider
 
     .state('elasticslice.dashboard-search', {
-      url: '/dashboards/search',
+      url: '/dashboards/search?portal',
       templateUrl: 'app/dashboards/analytics/dashboard-search.tmpl.html',
       controller: 'DashboardAnalyticsController',
-      controllerAs: 'vm'
-    })
-    .state('elasticslice.dashboard-search-content-only', {
-      url: '/dashboards/searchcontent',
-      templateUrl: 'app/dashboards/analytics/dashboard-search-content-only.tmpl.html',
-      controller: 'DashboardSearchContentOnlyController',
       controllerAs: 'vm'
     })
     .state('elasticslice.dashboard-NPS', {
