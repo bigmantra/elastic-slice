@@ -49,12 +49,13 @@
 
 
   </div>
-  </div>
+
+
   <div layout="row" layout-xs="column" layout-margin>
     <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="11/03/15 - 11/4/15" content-layout="row" content-padding>
       <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
     </uicore-widget>
-    <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle="11/03/15 - 11/4/15" content-padding>
+    <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle="11/03/15 - 11/4/15" content-padding content-layout="row">
       <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true" chart-labels="pieChart.labels"></canvas>
     </uicore-widget>
   </div>

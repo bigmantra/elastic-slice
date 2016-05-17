@@ -11,11 +11,8 @@ export default    function chartjsPieWidget($timeout) {
   return directive;
 
   function link($scope, $element, attrs, widgetCtrl) {
-    widgetCtrl.setLoading(true);
+    widgetCtrl.setLoading(false);
 
-    $timeout(function () {
-      widgetCtrl.setLoading(false);
-    }, 1500);
 
     widgetCtrl.setMenu({
       icon: 'zmdi zmdi-more-vert',
@@ -24,9 +21,9 @@ export default    function chartjsPieWidget($timeout) {
         title: 'Refresh',
         click: function () {
           widgetCtrl.setLoading(true);
-          $timeout(function () {
-            widgetCtrl.setLoading(false);
-          }, 1500);
+          refreshData();
+          widgetCtrl.setLoading(false);
+
         }
       }, {
         icon: 'zmdi zmdi-share',
@@ -38,8 +35,45 @@ export default    function chartjsPieWidget($timeout) {
     });
 
     $scope.pieChart = {
-      labels: ['Promoters', 'Detractors', 'Passives'],
-      data: [300, 500, 100]
+      labels: [],
+      data: [],
+      options: {
+        responsive: true,
+        maintainAspectRatio: true
+      }
     };
+
+
+    function refreshData() {
+
+
+      var chartData=$scope.indexVM.results && ($scope.indexVM.results.aggregations.category_chart_aggr || $scope.indexVM.results.aggregations.filtered_category_chart_aggr.category_chart_aggr);
+
+      $scope.pieChart = {
+        labels: [],
+        data: []
+      };
+
+      if (chartData && chartData.buckets) {
+
+
+        angular.forEach(chartData.buckets, (value, key)=> {
+          $scope.pieChart.labels.push(value.key)
+          $scope.pieChart.data.push(value.doc_count);
+        })
+
+      }
+
+
+    }
+
+    $scope.$watch(()=> {
+      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_category_chart_aggr || $scope.indexVM.results.aggregations.category_chart_aggr)
+    }, ()=> {
+
+      refreshData()
+    })
+
+
   }
 }

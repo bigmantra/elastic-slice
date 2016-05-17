@@ -15,7 +15,7 @@ export class ChecklistDirective {
 
     (<any>directive).link = {
       'pre': function (scope:any, element:ng.IAugmentedJQuery, attrs:any) {
-        AngularTool.setupBinding($parse, scope, attrs, ["field", "size"]);
+        AngularTool.setupBinding($parse, scope, attrs, ["field", "size","more"]);
         scope.agg_name = scope.field.replace(/[^a-z_0-9]/gmi, "_") + "_" + (Widgets.default_agg_count++);
       }
     }
@@ -33,7 +33,7 @@ export class ChecklistDirective {
             </ul>';
 */
 
-    
+
     directive.templateUrl='app/widgets/directives/checklist.tmpl.html';
 
     return directive;

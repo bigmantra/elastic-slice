@@ -1,18 +1,21 @@
-<md-content esl-aggregation="ejs.TermsAggregation(agg_name).field(field).size(size)">
+<md-content esl-aggregation="ejs.TermsAggregation(agg_name).field(field).size(size)" ng-cloak>
   <md-toolbar style="min-height:30px">
     <h4 style="max-height:30px">{{field | camelCaseToHuman | titlecase}}</h4>
   </md-toolbar>
-  <md-content>
-    <md-input-container class="md-block"  >
-        <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
+  <md-content layout-margin>
+    <md-input-container class="md-block">
+      <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
                    esl-filter="ejs.TermsFilter(field, bucket.key)" ng-model="filter.enabled"
                    aria-label="Primary Checkbox">
         {{bucket.key}} ({{bucket.doc_count}})
       </md-checkbox>
+      <span flex> </span>
+      <md-button style="text-transform: none" ng-hide="!more" class="md-primary" ng-click="size=size+5"><a>Show more..</a></md-button>
     </md-input-container>
-    <md-button class="md-default md-raised" ng-click="size=size+5">Show More</md-button>
+
+
   </md-content>
 
-    <md-divider></md-divider>
+  <md-divider></md-divider>
 
 </md-content>

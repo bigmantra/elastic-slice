@@ -1,169 +1,61 @@
-<md-content class="md-sidenav-push-in-target" flex="" layout-padding="">
+<div class="dashboard-container overlay-10 padded-content-page" layout="column">
+
+  <search-body esl-index="'nps'"
+               esl-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
+               esl-enabled="true">
 
 
-  <div class="dashboard-container overlay-10 padded-content-page" layout="column" ng-cloak>
-
-    <div esl-index="'nps'"
-         esl-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
-         esl-enabled="true">
-
-      <md-content layout="column" layout-margin>
-        <div layout='row' layout-fill layout-margin layout-align='start center'>
-          <esl-searchbox flex="80"
-                         field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></esl-searchbox>
-        </div>
-      </md-content>
+    <div layout='row' layout-margin>
+      <esl-searchbox flex="80"
+                     field="['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']"></esl-searchbox>
+      <md-button layout-align="end center" class="md-icon-button toolbar-button disable-small"
+                 ng-click="vm.openSidebar('rightsidebar')"
+                 aria-label="search filters">
+        <md-icon md-font-icon="fa fa-filter"></md-icon>
+      </md-button>
+    </div>
 
 
-      <md-sidenav ng-if="showMobileFilters" flex class="md-sidenav-right md-whiteframe-z2" md-component-id="rightsidebar">
-        <md-toolbar class="md-theme-light">
-          <h1 class="md-toolbar-tools">Filters</h1>
-        </md-toolbar>
-        <div class="content-wrapper md-padding" id="sidenavcontent">
-          <md-content>
-            <esl-checklist field="'suggestionsToImprove'" size="8"></esl-checklist>
-            <esl-checklist field="'commentsTerms'" size="8"></esl-checklist>
-            <esl-checklist field="'salesRep'" size="8"></esl-checklist>
-            <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
-            <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
-            <esl-checklist field="'productFamily'" size="5"></esl-checklist>
-            <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
-            <esl-checklist field="'rating'" size="10"></esl-checklist>
-            <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
-            <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
-            <esl-checklist field="'customerReference'" size="5"></esl-checklist>
-          </md-content>
-        </div>
-      </md-sidenav>
+    <!--    <ng-include src="'app/dashboards/analytics/dashboard-search-mobile-sidenav.tmpl.html'"></ng-include>-->
 
 
-      <md-content layout="column">
-        <md-content layout="row" layout-align='start center'>
-          <div layout="row">
-            <span ng-if="indexVM.results.hits.total" style="margin-left: 12px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
-            <span flex></span>
-
-            <md-button layout-align="end center" class="md-icon-button toolbar-button disable-small"
-                       ng-click="vm.openSidebar('rightsidebar')"
-                       aria-label="search filters">
-              <md-icon md-font-icon="fa fa-filter"></md-icon>
-            </md-button>
-
-          </div>
+    <div layout="row"  layout-xs="column" layout-margin layout-align="start start">
 
 
-        </md-content>
+      <aggr
+        esl-aggregation="ejs.TermsAggregation('surveyYear_chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.TermsAggregation ('surveyYear_chart_aggr_month' + '_count').field('surveyMonth').order('_term','asc'))">
+      </aggr>
+      <aggr esl-aggregation="ejs.TermsAggregation('category_chart_aggr').field('category').size(10)"></aggr>
+
+      <div class="esl-dash-content"flex="66"   layout="row" layout-xs="column" layout-margin>
+        <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="NPS Over Period" content-layout="row"
+                       content-padding>
+          <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true"
+                  chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
+        </uicore-widget>
+        <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle=""
+                       content-padding content-layout="row">
+          <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true"
+                  chart-labels="pieChart.labels"></canvas>
+        </uicore-widget>
+      </div>
 
 
+      <div flex="33" class="content-wrapper disable-large" style="margin-left: 10px">
 
-        <md-content layout="row" layout-align="center top">
+        <ng-include src="'app/dashboards/analytics/dashboard-search-sidenav-contents.tmpl.html'"></ng-include>
 
-          <div flex layout-margin>
-            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
-                 layout-align='start center' ng-cloak>
-              <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
-                                       template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
-              <md-input-container class="disable-large">
-                <label style="font-size: 12px;">Pg. Size</label>
-                <md-select ng-model="indexVM.pageSize">
-                  <md-option ng-repeat="item in [5,10, 20, 50, 100]">{{item}}</md-option>
-                </md-select>
-              </md-input-container>
-            </div>
-            <div ng-if="!indexVM.results.hits.total" layout='row' layout-fill layout-margin layout-align='start center'>
-              <span>No results containing all your search terms were found</span>
-            </div>
-
-            <div layout-margin>
-              <div esl-or-filter esl-filter-self="false" esl-aggregation="ejs.TermsAggregation('chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.AvgAggregation (agg_name + '_avg').field('rating'))"  >
-
-                <md-input-container >
-                  <md-checkbox class="md-accent es-search-facet-checklist" ng-repeat="bucket in aggResult.buckets"
-                               esl-filter="ejs.TermsFilter('surveyYear', bucket.key)" ng-model="filter.enabled"
-                               aria-label="Primary Checkbox">
-                    {{bucket.key}} ({{bucket.doc_count}})
-                  </md-checkbox>
-                </md-input-container>
-
-                <uicore-widget data="aggResult" chartjs-line-widget title="Trend" subtitle="11/03/15 - 11/4/15" content-layout="row" content-padding>
-                  <canvas class="chart-line" chart-click="onClick" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
-                </uicore-widget>
-
-              </div>
-            </div>
+      </div>
 
 
-            <md-list>
-              <md-list-item class="md-3-line"
-                            dir-paginate="item in indexVM.results.hits.hits | itemsPerPage: indexVM.pageSize"
-                            total-items="indexVM.results.hits.total>10000?10000:indexVM.results.hits.total"
-                            current-page="indexVM.page"
-                            ng-click="vm.showDetailsDialog($event,item)" layout-wrap>
-                <!-- <img ng-src="https://logo.clearbit.com/{{::item._source.domain}}" class="md-avatar" alt="{{::item._source.customerAccountName}}"/>-->
-                <div class="md-list-item-text">
-                  <h3 style="color: rgb(0, 0, 0)">{{::item._source.customerAccountName}} <span style="font-size: 10px;">(Responded to NPS Survey on {{::item._source.surveyDate | date}})</span>
-                  </h3>
-                  <p ng-if="item.highlight.billingAccountId" ng-bind-html="item.highlight.billingAccountId[0]"></p>
-                  <p ng-if="item.highlight.billingAccountName" ng-bind-html="item.highlight.billingAccountName[0]"></p>
-                  <p ng-if="item.highlight.commentsText" ng-bind-html="'...' + item.highlight.commentsText[0]"></p>
-                  <p ng-if="item.highlight.suggestionsToImproveText"
-                     ng-bind-html="item.highlight.suggestionsToImproveText[0]"></p>
-                  <p ng-if="!item.highlight && item._source.commentsText"> {{item._source.commentsText}}</p>
-                  <p ng-if="!item.highlight && item._source.suggestionsToImproveText">
-                    {{item._source.suggestionsToImproveText}}</p>
-                </div>
-
-                <div>
-                  <md-icon style="color: limegreen;" md-font-icon="fa fa-smile-o fa-3"
-                           ng-show="item._source.rating > 8">
-                    <md-tooltip>
-                      {{item._source.rating}}
-                    </md-tooltip>
-                  </md-icon>
-                  <md-icon style="color: red;" md-font-icon="fa fa-frown-o fa-3"
-                           ng-show="item._source.rating < 6">
-                    <md-tooltip>
-                      {{item._source.rating}}
-                    </md-tooltip>
-                  </md-icon>
-                  <md-icon style="color: orange;" md-font-icon="fa fa-meh-o fa-3"
-                           ng-show="item._source.rating > 5 && item._source.rating < 9">
-                    <md-tooltip>
-                      {{item._source.rating}}
-                    </md-tooltip>
-                  </md-icon>
-                </div>
-
-              </md-list-item>
-
-            </md-list>
-
-            <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
-                 layout-align='center center'>
-              <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
-                                       template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
-            </div>
-
-          </div>
-          <div flex="33" class="content-wrapper md-padding disable-large">
-            <esl-checklist field="'suggestionsToImprove'" size="20"></esl-checklist>
-            <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
-            <esl-checklist field="'salesRep'" size="8"></esl-checklist>
-            <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
-            <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
-            <esl-checklist field="'productFamily'" size="5"></esl-checklist>
-            <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
-            <esl-checklist field="'rating'" size="10"></esl-checklist>
-            <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
-            <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
-            <esl-checklist field="'customerReference'" size="5"></esl-checklist>
-          </div>
-
-        </md-content>
-
+      <!--        <ng-include src="'app/dashboards/analytics/dashboard-search-result-list-view.tmpl.html'"></ng-include>-->
 
     </div>
 
 
-  </div>
-</md-content>
+  </search-body>
+
+
+</div>
+
+

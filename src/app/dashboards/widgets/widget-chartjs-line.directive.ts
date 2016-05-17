@@ -5,7 +5,7 @@ export default    function chartjsLineWidget($timeout, $interval) {
   // Creates:
   //
   var directive = {
-    require: '^uicoreWidget',
+    require: 'uicoreWidget',
     link: link,
     restrict: 'A',
 
@@ -22,7 +22,6 @@ export default    function chartjsLineWidget($timeout, $interval) {
         title: 'Refresh',
         click: function () {
 
-          console.log(widgetCtrl.data)
           refreshData();
 
 
@@ -41,11 +40,16 @@ export default    function chartjsLineWidget($timeout, $interval) {
       console.log(points, evt);
     };
 
+
     function refreshData() {
+
+
+      var chartData=$scope.indexVM.results && ($scope.indexVM.results.aggregations.surveyYear_chart_aggr || $scope.indexVM.results.aggregations.filtered_surveyYear_chart_aggr.surveyYear_chart_aggr);
+
 
       $scope.lineChart = {
         labels: [],
-        series: ['# matching respondents'],
+        series: ['# Responses'],
         options: {
           datasetFill: false,
           responsive: true
@@ -53,13 +57,27 @@ export default    function chartjsLineWidget($timeout, $interval) {
         data: [[]]
       };
 
-      if (widgetCtrl.data && widgetCtrl.data.buckets) {
+      if (chartData && chartData.buckets) {
 
 
-        angular.forEach(widgetCtrl.data.buckets, (value, key)=> {
-          console.log(value.key)
-          $scope.lineChart.labels.push(value.key)
-          $scope.lineChart.data[$scope.lineChart.data.length - 1].push(value.doc_count);
+        angular.forEach(chartData.buckets, (value, key)=> {
+
+
+          if(chartData.buckets.length==1){
+
+            angular.forEach(value.surveyYear_chart_aggr_month_count.buckets, (childvalue, childkey)=> {
+
+              $scope.lineChart.labels.push(childvalue.key)
+              $scope.lineChart.data[$scope.lineChart.data.length - 1].push(childvalue.doc_count);
+
+            })
+          }
+          else{
+            $scope.lineChart.labels.push(value.key)
+            $scope.lineChart.data[$scope.lineChart.data.length - 1].push(value.doc_count);
+          }
+
+
         })
 
 
@@ -69,10 +87,11 @@ export default    function chartjsLineWidget($timeout, $interval) {
     }
 
     $scope.$watch(()=> {
-      return widgetCtrl.data && widgetCtrl.data.buckets
+      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_surveyYear_chart_aggr || $scope.indexVM.results.aggregations.surveyYear_chart_aggr)
     }, ()=> {
 
-      console.log('something changed')
+      console.log('watch triggereed')
+
       refreshData()
     })
 
