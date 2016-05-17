@@ -40,8 +40,18 @@ export default    function chartjsPieWidget($timeout) {
       options: {
         responsive: true,
         maintainAspectRatio: true
-      }
-    };
+      },
+      backgroundColor: [
+        "#FF6384",
+        "#36A2EB",
+        "#FFCE56"
+      ],
+      hoverBackgroundColor: [
+        "#FF6384",
+        "#36A2EB",
+        "#FFCE56"
+      ]
+    }
 
 
     function refreshData() {
@@ -51,7 +61,12 @@ export default    function chartjsPieWidget($timeout) {
 
       $scope.pieChart = {
         labels: [],
-        data: []
+        data: [],
+        colours:[],
+        options: {
+          responsive: true,
+          maintainAspectRatio: true
+        }
       };
 
       if (chartData && chartData.buckets) {
@@ -59,7 +74,27 @@ export default    function chartjsPieWidget($timeout) {
 
         angular.forEach(chartData.buckets, (value, key)=> {
           $scope.pieChart.labels.push(value.key)
+
+          switch(value.key) {
+
+            case 'Promoter':
+              $scope.pieChart.colours.push('#A9F5A9');
+                  break;
+            case 'Passive':
+              $scope.pieChart.colours.push('#FAAC58');
+                  break
+            case 'Detractor':
+              $scope.pieChart.colours.push('#FA5858');
+
+          }
+
+
+
+
+
           $scope.pieChart.data.push(value.doc_count);
+
+
         })
 
       }

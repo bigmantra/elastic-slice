@@ -1,4 +1,4 @@
-<div class="dashboard-container overlay-10 padded-content-page" layout="column">
+<div class="dashboard-container overlay-10" layout="column">
 
   <search-body esl-index="'nps'"
                esl-highlight="ejs.Highlight(['commentsText','suggestionsToImproveText','billingAccountId','billingAccountName']).preTags('<mark>').postTags('</mark>')"
@@ -22,12 +22,15 @@
     <div layout="row"  layout-xs="column" layout-margin layout-align="start start">
 
 
-      <aggr
-        esl-aggregation="ejs.TermsAggregation('surveyYear_chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.TermsAggregation ('surveyYear_chart_aggr_month' + '_count').field('surveyMonth').order('_term','asc'))">
-      </aggr>
-      <aggr esl-aggregation="ejs.TermsAggregation('category_chart_aggr').field('category').size(10)"></aggr>
+
 
       <div class="esl-dash-content"flex="66"   layout="row" layout-xs="column" layout-margin>
+
+        <aggr
+          esl-aggregation="ejs.TermsAggregation('surveyYear_chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.TermsAggregation ('surveyYear_chart_aggr_month' + '_count').field('surveyMonth').order('_term','asc'))">
+        </aggr>
+        <aggr esl-aggregation="ejs.TermsAggregation('category_chart_aggr').field('category').size(10)"></aggr>
+
         <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="NPS Over Period" content-layout="row"
                        content-padding>
           <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true"
@@ -36,7 +39,7 @@
         <uicore-widget chartjs-pie-widget title="Promoters Passives Detractors" subtitle=""
                        content-padding content-layout="row">
           <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true"
-                  chart-labels="pieChart.labels"></canvas>
+                  chart-labels="pieChart.labels" chart-colours="pieChart.colours"></canvas>
         </uicore-widget>
       </div>
 
