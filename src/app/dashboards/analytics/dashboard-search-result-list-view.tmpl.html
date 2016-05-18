@@ -1,4 +1,4 @@
-<md-content layout="column">
+<md-content layout="column" layout-padding>
   <md-content layout="row" layout-align='start center'>
     <div layout="row">
       <span ng-if="indexVM.results.hits.total" style="margin-left: 12px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
@@ -71,12 +71,6 @@
         </md-list-item>
 
       </md-list>
-
-      <div ng-if="indexVM.results.hits.total>indexVM.pageSize" layout='row' layout-fill layout-margin
-           layout-align='center center'>
-        <dir-pagination-controls class="disable-large" boundary-links="true" max-size="5"
-                                 template-url="app/uicore/components/paging/paging.tmpl.html"></dir-pagination-controls>
-      </div>
 
     </div>
 

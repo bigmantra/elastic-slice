@@ -224,7 +224,7 @@ export default    function themesConfig($mdThemingProvider, uicoreThemingProvide
 
   uicoreSkinsProvider.skin('proteus', 'Proteus')
     .sidebarTheme('proteus-red')
-    .toolbarTheme('proteus-grey')
+    .toolbarTheme('default')
     .logoTheme('proteus-grey')
     .contentTheme('proteus-grey');
 

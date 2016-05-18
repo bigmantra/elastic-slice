@@ -1,5 +1,5 @@
 /* @ngInject */
-export default    function chartjsLineWidget($timeout, $interval) {
+export default    function chartjsLineWidget() {
   // Usage:
   //
   // Creates:
@@ -37,7 +37,7 @@ export default    function chartjsLineWidget($timeout, $interval) {
 
 
     $scope.onClick = function (points, evt) {
-      console.log(points, evt);
+      // console.log(points, evt);
     };
 
 
@@ -89,8 +89,6 @@ export default    function chartjsLineWidget($timeout, $interval) {
     $scope.$watch(()=> {
       return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_surveyYear_chart_aggr || $scope.indexVM.results.aggregations.surveyYear_chart_aggr)
     }, ()=> {
-
-      console.log('watch triggereed')
 
       refreshData()
     })

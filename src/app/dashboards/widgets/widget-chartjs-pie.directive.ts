@@ -34,26 +34,6 @@ export default    function chartjsPieWidget($timeout) {
       }]
     });
 
-    $scope.pieChart = {
-      labels: [],
-      data: [],
-      options: {
-        responsive: true,
-        maintainAspectRatio: true
-      },
-      backgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56"
-      ],
-      hoverBackgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56"
-      ]
-    }
-
-
     function refreshData() {
 
 
@@ -87,10 +67,6 @@ export default    function chartjsPieWidget($timeout) {
               $scope.pieChart.colours.push('#FA5858');
 
           }
-
-
-
-
 
           $scope.pieChart.data.push(value.doc_count);
 
