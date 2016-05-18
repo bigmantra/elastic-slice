@@ -87,7 +87,7 @@ export default    function chartjsLineWidget() {
     }
 
     $scope.$watch(()=> {
-      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_surveyYear_chart_aggr || $scope.indexVM.results.aggregations.surveyYear_chart_aggr)
+      return $scope.indexVM.results && $scope.indexVM.results.hits.total
     }, ()=> {
 
       refreshData()

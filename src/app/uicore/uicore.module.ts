@@ -29,6 +29,11 @@ export default angular
   .run(runFunctionRouter)
   .config(routeConfig)
   .provider('uicoreSettings', settingsProvider)
-  .filter('titlecase',TitleCase);
+  .filter('titlecase',TitleCase)
+  .filter("matchMedia", function($window) {
+    return function matchMedia (mediaQueryString) {
+      return $window.matchMedia(mediaQueryString).matches;
+    }
+  });
 
 

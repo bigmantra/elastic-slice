@@ -17,6 +17,7 @@ export default    function tileNPSWidget() {
 
   function link($scope, $element, attrs, widgetCtrl) {
 
+    $scope.npsScore=0;
 
     widgetCtrl.setMenu({
       icon: 'zmdi zmdi-more-vert',
@@ -54,7 +55,7 @@ export default    function tileNPSWidget() {
 
         var totalCount = ($scope.indexVM.results && $scope.indexVM.results.hits && $scope.indexVM.results.hits.total) || 0
 
-        $scope.npsScore = (((promoterObj.doc_count / totalCount) * 100.0) - ((detractorObj.doc_count / totalCount) * 100.0))
+        $scope.npsScore = (((promoterObj.doc_count / totalCount) * 100.0) - ((detractorObj.doc_count / totalCount) * 100.0)) || 0
 
 
 
@@ -63,8 +64,9 @@ export default    function tileNPSWidget() {
     }
 
     $scope.$watch(()=> {
-      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_category_chart_aggr || $scope.indexVM.results.aggregations.category_chart_aggr)
+      return $scope.indexVM.results && $scope.indexVM.results.hits.total
     }, ()=> {
+
 
       refreshData();
     })

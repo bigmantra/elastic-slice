@@ -16,9 +16,8 @@
     </div>
 
 
-    <!--    <ng-include src="'app/dashboards/analytics/dashboard-search-mobile-sidenav.tmpl.html'"></ng-include>-->
-
-
+    <ng-include ng-if="'(max-width: 600px)' | matchMedia"
+                src="'app/dashboards/analytics/dashboard-search-mobile-sidenav.tmpl.html'"></ng-include>
 
 
     <div layout="row" layout-xs="column" layout-margin layout-align="start start">
@@ -29,49 +28,66 @@
           <md-tab label="Charts">
 
 
-              <div class="drag-container" layout="row" layout-xs="column" layout-margin dragula='"drag-analytics-container"'>
-                <uicore-widget tile-nps-widget palette-background="grey:100" content-layout="row" content-layout-align="space-between center"
-                               content-padding>
-                  <div>
-                    <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-tachometer"></md-icon>
-                  </div>
-                  <div layout="column" layout-align="center end">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="npsScore" decimals="1"></p>
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0">NPS Score</p>
-                  </div>
-                </uicore-widget>
-                <uicore-widget palette-background="grey:100" content-layout="row" content-layout-align="space-between center"
-                               content-padding>
-                  <div>
-                    <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-list-ul"></md-icon>
-                  </div>
-                  <div layout="column" layout-align="center end">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="300" decimals="0"></p>
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Responses</p>
-                  </div>
-                </uicore-widget>
-              </div>
+            <div class="drag-container" layout="row" layout-xs="column" layout-margin
+                 dragula='"drag-analytics-container"'>
+              <uicore-widget tile-nps-widget palette-background="grey:100" content-layout="row"
+                             content-layout-align="space-between center"
+                             content-padding>
+                <div>
+                  <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-tachometer"></md-icon>
+                </div>
+                <div layout="column" layout-align="center end">
+                  <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="npsScore"
+                     duration="1.5" decimals="1"></p>
+                  <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0">NPS Score</p>
+                </div>
+              </uicore-widget>
+              <uicore-widget palette-background="grey:100" content-layout="row"
+                             content-layout-align="space-between center"
+                             content-padding>
+                <div>
+                  <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
+                </div>
+
+                <div layout="column" layout-align="center end">
+                  <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0"
+                     countupto="indexVM.results.hits.total || 0" duration="1.5" decimals="0"></p>
+                  <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>Responses</p>
+                </div>
+              </uicore-widget>
+            </div>
 
 
+            <div layout="row" layout-xs="column" layout-margin>
 
-              <div layout="row" layout-xs="column" layout-margin>
+              <aggr style="display:none"
+                    esl-aggregation="ejs.TermsAggregation('surveyYear_chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.TermsAggregation ('surveyYear_chart_aggr_month' + '_count').field('surveyMonth').order('_term','asc'))">
+              </aggr>
+              <aggr style="display:none"
+                    esl-aggregation="ejs.TermsAggregation('category_chart_aggr').field('category').size(10)"></aggr>
 
-                <aggr style="display:none"
-                      esl-aggregation="ejs.TermsAggregation('surveyYear_chart_aggr').field('surveyYear').size(10).order('_term','asc').agg(ejs.TermsAggregation ('surveyYear_chart_aggr_month' + '_count').field('surveyMonth').order('_term','asc'))">
-                </aggr>
-                <aggr style="display:none" esl-aggregation="ejs.TermsAggregation('category_chart_aggr').field('category').size(10)"></aggr>
+              <uicore-widget chartjs-line-widget title="Trend" subtitle="# Responses over time" content-layout="row"
+                             content-padding>
+                <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels"
+                        chart-legend="true"
+                        chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
+              </uicore-widget>
+              <uicore-widget chartjs-pie-widget title="Resp. Category" subtitle=""
+                             content-padding content-layout="row">
+                <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true"
+                        chart-labels="pieChart.labels" chart-colours="pieChart.colours"></canvas>
+              </uicore-widget>
+            </div>
 
-                <uicore-widget chartjs-line-widget title="NPS Trend" subtitle="NPS Over Period" content-layout="row"
-                               content-padding>
-                  <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true"
-                          chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
-                </uicore-widget>
-                <uicore-widget chartjs-pie-widget title="Resp. Category" subtitle=""
-                               content-padding content-layout="row">
-                  <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true"
-                          chart-labels="pieChart.labels" chart-colours="pieChart.colours"></canvas>
-                </uicore-widget>
-              </div>
+
+            <!--            <div layout="row" layout-xs="column">
+
+                          <uicore-widget chartjs-line-widget title="Comment Terms" content-layout="column">
+                            <cloud-widget words="vm.cloudWords" width="300" height="300" delay="10" steps="7" font-size="{from:0.09, to:0.04}"></cloud-widget>
+                          </uicore-widget>
+
+
+                        </div>-->
 
           </md-tab>
           <md-tab label="List">
@@ -82,20 +98,15 @@
         </md-tabs>
 
 
-
-
-
       </div>
 
 
-      <div flex="33" class="content-wrapper disable-large">
+      <div flex="33" ng-if="'(min-width: 600px)' | matchMedia" class="content-wrapper disable-large">
 
         <ng-include src="'app/dashboards/analytics/dashboard-search-sidenav-contents.tmpl.html'"></ng-include>
 
       </div>
 
-
-      <!--        <ng-include src="'app/dashboards/analytics/dashboard-search-result-list-view.tmpl.html'"></ng-include>-->
 
     </div>
 

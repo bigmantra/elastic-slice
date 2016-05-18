@@ -4,6 +4,7 @@ import chartjsLineWidget from "./widgets/widget-chartjs-line.directive";
 import chartjsPieWidget from "./widgets/widget-chartjs-pie.directive";
 import loadDataWidget from "./widgets/widget-load-data.directive";
 import tileNPSWidget from "./widgets/widget-tile-nps.directive";
+import cloudWidget from "./widgets/widget-cloud.directive";
 
 export default angular
   .module('elastucslice.pages', [])
@@ -13,6 +14,8 @@ export default angular
   .directive('chartjsPieWidget', chartjsPieWidget)
   .directive('loadDataWidget', loadDataWidget)
   .directive('tileNpsWidget', tileNPSWidget)
+  .directive('cloudWidget', cloudWidget)
+
 
 
 

@@ -20,6 +20,9 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   var vm = this;
 
 
+
+
+
   function newMailNotificationController() {
     var vm = this;
     vm.viewUnread = function () {
@@ -33,7 +36,7 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
 
     $mdDialog.show({
-  
+
       controller: LoadDataDialogController,
       templateUrl: 'app/dashboards/analytics/response-details-dialog.tmpl.html',
       targetEvent: event,
@@ -74,6 +77,8 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
       uicoreLayout.setOption('showToolbar', false);
 
     }
+
+
 
   }
 

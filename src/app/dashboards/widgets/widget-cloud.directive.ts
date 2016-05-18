@@ -12,8 +12,6 @@ export default    function cloudWidget($parse) {
   // Creates:
   //
 
-
-
   var defaults = jQuery.fn.jQCloud.defaults.get(),
     jqcOptions = [];
 
@@ -28,12 +26,16 @@ export default    function cloudWidget($parse) {
     restrict: 'E',
     template: '<div></div>',
     replace: true,
-    scope: {
+/*    scope: {
       words: '=words',
       afterCloudRender: '&'
-    },
-    link: function ($scope, $elem, $attr) {
+    },*/
+    link: function ($scope, $elem, $attr,widgetCtrl) {
       var options:any = {};
+
+      $scope.words=[];
+
+
 
       for (var i = 0, l = jqcOptions.length; i < l; i++) {
         var opt = jqcOptions[i];
@@ -49,6 +51,7 @@ export default    function cloudWidget($parse) {
 
       var jqElem=<iJQCloud>jQuery($elem);
 
+
       jqElem.jQCloud($scope.words, options);
 
       $scope.$watchCollection('words', function () {
@@ -62,48 +65,36 @@ export default    function cloudWidget($parse) {
       $elem.bind('$destroy', function () {
         jqElem.jQCloud('destroy');
       });
+
+
+
+      $scope.$watch(()=> {
+        return $scope.indexVM.results && $scope.indexVM.results.hits.total
+      }, ()=> {
+
+
+
+        var cloudData=$scope.indexVM.results && ($scope.indexVM.results.aggregations.commentsTerms_2 || $scope.indexVM.results.aggregations.filtered_commentsTerms_2.commentsTerms_2);
+
+        $scope.words=[];
+        angular.forEach(cloudData && cloudData.buckets,(bucket)=>{
+          $scope.words.push({text:bucket.key,weight:bucket.doc_count})
+
+
+        })
+
+
+      })
+
+
+
+
+
     }
+
+
 
   };
   return directive;
 
-  function link($scope, $element, attrs, widgetCtrl) {
-
-
-    widgetCtrl.setMenu({
-      icon: 'zmdi zmdi-more-vert',
-      items: [{
-        icon: 'zmdi zmdi-refresh',
-        title: 'Refresh',
-        click: function () {
-
-          refreshData();
-
-
-        }
-      }, {
-        icon: 'zmdi zmdi-share',
-        title: 'Share'
-      }, {
-        icon: 'zmdi zmdi-print',
-        title: 'Print'
-      }]
-    });
-
-    function refreshData() {
-
-
-    }
-
-    $scope.$watch(()=> {
-      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_surveyYear_chart_aggr || $scope.indexVM.results.aggregations.surveyYear_chart_aggr)
-    }, ()=> {
-
-
-      refreshData()
-    })
-
-    /*    // Simulate async data update
-     $scope.intervalPromise = $interval(randomData, 50000);*/
-  }
 }
