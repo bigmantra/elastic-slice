@@ -1,5 +1,7 @@
-<md-content layout="row" layout-wrap class="widget" style="min-height: 50px"
-     esl-aggregation="ejs.TermsAggregation('surveyYear_prompt_aggr').field('surveyYear').size(10).order('_term','asc')">
+<md-content layout="column" >
+
+  <div layout="row" layout-wrap class="widget" style="min-height: 50px"
+       esl-aggregation="ejs.TermsAggregation('surveyYear_prompt_aggr').field('surveyYear').size(10).order('_term','asc')">
 
   <md-toolbar style="min-height:30px">
     <h4 style="max-height:30px">Year</h4>
@@ -19,18 +21,20 @@
     </md-button>
 
   </div>
+  </div>
+
+  <esl-checklist more="false" field="'category'" size="5"></esl-checklist>
+  <esl-checklist more="true" field="'suggestionsToImprove'" size="20"></esl-checklist>
+  <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
+  <esl-checklist field="'salesRep'" size="8"></esl-checklist>
+  <esl-checklist field="'surveyYear'" size="8"></esl-checklist>
+  <esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
+  <esl-checklist field="'productFamily'" size="5"></esl-checklist>
+  <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
+  <esl-checklist field="'rating'" size="10"></esl-checklist>
+  <esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
+  <esl-checklist field="'continuedUse'" size="5"></esl-checklist>
+  <esl-checklist field="'customerReference'" size="5"></esl-checklist>
 
 
 </md-content>
-<esl-checklist more="false" field="'category'" size="5"></esl-checklist>
-<esl-checklist more="true" field="'suggestionsToImprove'" size="20"></esl-checklist>
-<esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
-<esl-checklist field="'salesRep'" size="8"></esl-checklist>
-<esl-checklist field="'surveyYear'" size="8"></esl-checklist>
-<esl-checklist field="'surveyMonth'" size="12"></esl-checklist>
-<esl-checklist field="'productFamily'" size="5"></esl-checklist>
-<esl-checklist field="'practiceArea'" size="5"></esl-checklist>
-<esl-checklist field="'rating'" size="10"></esl-checklist>
-<esl-checklist field="'decisionLevel'" size="5"></esl-checklist>
-<esl-checklist field="'continuedUse'" size="5"></esl-checklist>
-<esl-checklist field="'customerReference'" size="5"></esl-checklist>

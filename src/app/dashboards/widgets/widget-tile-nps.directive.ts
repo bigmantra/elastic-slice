@@ -41,20 +41,24 @@ export default    function tileNPSWidget() {
     function refreshData() {
 
 
+      var categoryBuckets = $scope.indexVM.results && (($scope.indexVM.results.aggregations.filtered_category_chart_aggr && $scope.indexVM.results.aggregations.filtered_category_chart_aggr.category_chart_aggr) || $scope.indexVM.results.aggregations.category_chart_aggr);
+
+      var promoterObj, detractorObj;
+
+      if (categoryBuckets) {
+
+        _.forEach((categoryBuckets), (bucket)=> {
+          promoterObj = _.find(bucket, {'key': 'Promoter'}) || {doc_count: 0}
+          detractorObj = _.find(bucket, {'key': 'Detractor'}) || {doc_count: 0}
+        })
+
+        var totalCount = ($scope.indexVM.results && $scope.indexVM.results.hits && $scope.indexVM.results.hits.total) || 0
+
+        $scope.npsScore = (((promoterObj.doc_count / totalCount) * 100.0) - ((detractorObj.doc_count / totalCount) * 100.0))
 
 
-      var categoryBuckets= $scope.indexVM.results && (($scope.indexVM.results.aggregations.filtered_category_chart_aggr && $scope.indexVM.results.aggregations.filtered_category_chart_aggr.category_chart_aggr) || $scope.indexVM.results.aggregations.category_chart_aggr);
 
-      var promoterObj,detractorObj;
-
-      _.forEach((categoryBuckets),(bucket)=> promoterObj=_.find(bucket, { 'key': 'Promoter'}) || {doc_count:0})
-      _.forEach((categoryBuckets),(bucket)=> detractorObj=_.find(bucket, { 'key': 'Detractor'}) || {doc_count:0})
-      var totalCount= ($scope.indexVM.results && $scope.indexVM.results.hits && $scope.indexVM.results.hits.total) ||0
-
-      var npsScore = (((promoterObj.doc_count/totalCount) *100.0) - ((detractorObj.doc_count/totalCount) * 100.0))
-
-      console.log('NPS',npsScore);
-
+      }
 
     }
 
@@ -65,7 +69,5 @@ export default    function tileNPSWidget() {
       refreshData();
     })
 
-    /*    // Simulate async data upd  ate
-     $scope.intervalPromise = $interval(randomData, 50000);*/
   }
 }
