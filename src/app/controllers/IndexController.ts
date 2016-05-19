@@ -3,7 +3,7 @@ import {IIndexViewModel} from "./IIndexScope";
 import {FilterCollection} from "../util/FilterCollection";
 import {SimpleSet} from "../util/SimpleSet";
 import {ElasticService} from "../services/ElasticService"
-
+import * as _ from "lodash"
 
 
 export class IndexController {
@@ -20,6 +20,7 @@ export class IndexController {
     sort: null,
     aggregationProviders: new SimpleSet(),
     filters: this.filters,
+    getFilters:()=>this.getFilters(),
     highlight: null,
     loaded: false,
     page: 1,
@@ -41,6 +42,28 @@ export class IndexController {
         this.search();
       }
     }
+  }
+
+  public getFilters(){
+
+    var filters=[];
+
+    _.forEach((this.filters.ejsObjects),(obj)=>{
+      _.flatMap(obj.toJSON(), (map)=> {
+        return _.forIn(map, function(value, key) {
+          var filterPair={}
+          filterPair[key]=value[0];
+          filters.push(filterPair)
+        });
+      });
+
+    })
+
+
+
+    return filters;
+
+
   }
 
   static $inject = ['$scope', '$timeout', '$window', 'es', '$rootScope'];

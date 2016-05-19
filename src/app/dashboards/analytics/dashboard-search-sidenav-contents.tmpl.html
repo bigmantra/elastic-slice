@@ -1,6 +1,6 @@
-<style>
+<!--<style>
   #cloud-dynamic { width: 100%; height: 250px; }
-</style>
+</style>-->
 
 <md-content layout="column" >
 
@@ -13,12 +13,12 @@
 
   <div ng-repeat="bucket in aggResult.buckets"
        esl-filter="ejs.TermsFilter('surveyYear', bucket.key)">
-    <md-button style="min-width:40px" ng-if="!filter.enabled" class="md-primary" ng-click="filter.enabled=true;drilldown()"
+    <md-button style="min-width:40px" ng-if="!filter.enabled" class="md-primary" ng-click="filter.enabled=true;"
                aria-label="select year">
       <a>{{bucket.key}}</a>
     </md-button>
     <md-button style="min-width:40px;text-transform: lowercase;" ng-if="filter.enabled" class="md-primary"
-               ng-click="filter.enabled=false;drillup()"
+               ng-click="filter.enabled=false;"
                aria-label="undo year selection">
       <a>{{bucket.key}}</a> <span
       style="vertical-align: super;color: red;font-size: .83em ">x</span>
@@ -31,7 +31,9 @@
   <esl-checklist more="true" field="'suggestionsToImprove'" size="20"></esl-checklist>
   <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
 
+<!--
   <cloud-widget id="cloud-dynamic" words="vm.cloudWords" auto-resize="true" delay="1" steps="15" font-size="{from:0.09, to:0.04}"></cloud-widget>
+-->
 
 
   <esl-checklist field="'salesRep'" size="8"></esl-checklist>

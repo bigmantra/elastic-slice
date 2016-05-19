@@ -76,7 +76,7 @@
     "jqcloud2": {
       "main": [
         "dist/jqcloud.min.css",
-        "dist/jqcloud.min.js"
+        "dist/jqcloud.js"
       ]
     },
     "ng-file-upload": {

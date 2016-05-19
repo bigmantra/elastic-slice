@@ -13,4 +13,13 @@ export class FilterCollection extends EjsCollection {
   public contains(filter:any):boolean {
     return this.indexOf(filter) > -1;
   }
+
+  public doesExist(name:string):boolean{
+
+
+    
+    return true;
+
+  }
+
 }

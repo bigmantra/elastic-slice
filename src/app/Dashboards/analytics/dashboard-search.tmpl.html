@@ -1,3 +1,4 @@
+
 <div class="dashboard-container overlay-10" layout="column">
 
   <search-body esl-index="'nps'"
@@ -16,6 +17,7 @@
     </div>
 
 
+
     <ng-include ng-if="'(max-width: 600px)' | matchMedia"
                 src="'app/dashboards/analytics/dashboard-search-mobile-sidenav.tmpl.html'"></ng-include>
 
@@ -25,7 +27,7 @@
       <div class="esl-dash-content" flex-gt-sm="66" flex="100" layout="column" layout-margin>
 
         <md-tabs class="md-primary" md-selected="selectedTabIndex" md-stretch-tabs="always" md-dynamic-height>
-          <md-tab label="Charts">
+          <md-tab label="Summary">
 
 
             <div class="drag-container" layout="row" layout-xs="column" layout-margin
@@ -80,14 +82,18 @@
             </div>
 
 
-            <!--            <div layout="row" layout-xs="column">
+            <div layout="column"  layout-margin>
 
-                          <uicore-widget chartjs-line-widget title="Comment Terms" content-layout="column">
-                            <cloud-widget words="vm.cloudWords" width="300" height="300" delay="10" steps="7" font-size="{from:0.09, to:0.04}"></cloud-widget>
-                          </uicore-widget>
+              <uicore-widget title="Comment Terms" content-layout="column">
+
+                <cloud-widget center="{x: 0.5, y:0.5}" id="cloud-dynamic-search" auto-resize="true" delay="1" steps="15"
+                              font-size="{from:0.09, to:0.02}"></cloud-widget>
 
 
-                        </div>-->
+              </uicore-widget>
+
+
+            </div>
 
           </md-tab>
           <md-tab label="List">

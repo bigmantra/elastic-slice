@@ -1,0 +1,24 @@
+<div>
+
+  <md-content layout="row" esl-aggregation="ejs.TermsAggregation('comments_cloud_aggr').field('commentsTerms').size(20)">
+
+    <div  ng-repeat="bucket in aggResult.buckets"
+                esl-filter="ejs.TermsFilter('commentsTerms', bucket.key)">
+
+      <div>
+        <md-button style="min-width:40px;text-transform: uppercase;" ng-if="filter.enabled"
+                   ng-click="filter.enabled=false;"
+                   aria-label="undo selection">
+          <a>{{bucket.key}}</a> <span
+          style="vertical-align: super;color: red;font-size: .83em ">x</span>
+        </md-button>
+      </div>
+
+      <span id="cloud-dynamic-search_word_{{bucket.key}}" ng-click="filter.enabled=true;"><a></a></span>
+
+
+    </div>
+  </md-content>
+
+
+</div>

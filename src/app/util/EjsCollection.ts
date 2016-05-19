@@ -2,7 +2,7 @@
 
 export class EjsCollection {
   public ejsObjects:any = [];
-  private jsonObjects:any = [];
+  public jsonObjects:any = [];
 
   public indexOf(ejsObject:any) {
     return this.jsonObjects.indexOf(EjsTool.getJsonFromEjsObject(ejsObject));
@@ -22,5 +22,8 @@ export class EjsCollection {
       this.jsonObjects.splice(idx, 1);
     }
   }
+
+
+  
 
 }

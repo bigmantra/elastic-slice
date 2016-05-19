@@ -28,6 +28,7 @@ export class FilterController {
     this.scope.$watch('filter.enabled', (newVal, oldVal) => {
       if (newVal !== oldVal) {
         this.updateFilter();
+
       }
     });
 
