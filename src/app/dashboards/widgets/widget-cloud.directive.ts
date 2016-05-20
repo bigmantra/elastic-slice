@@ -38,7 +38,7 @@ export default    function cloudWidget($parse) {
       var
         options:any = {};
 
-      $scope.words        = [];
+      $scope.words = [];
 
 
       for (var i = 0, l = jqcOptions.length
@@ -81,6 +81,28 @@ export default    function cloudWidget($parse) {
         jqElem.jQCloud('destroy');
       });
 
+      function setWords() {
+
+        var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations.comments_cloud_aggr || $scope.indexVM.results.aggregations.filtered_comments_cloud_aggr.
+            comments_cloud_aggr);
+        $scope.words = [];
+        angular.forEach(
+          cloudData && cloudData.buckets, (bucket)=> {
+
+            if (!(_.find($scope.indexVM.getFilters(), (filter)=> {
+                return filter['commentsTerms'] === bucket.key;
+
+              }))) {
+
+              $scope.words.push({text: bucket.key, weight: bucket.doc_count})
+
+            }
+
+          })
+
+
+      }
+
 
       $scope.removeWord = function (word) {
 
@@ -89,29 +111,36 @@ export default    function cloudWidget($parse) {
 
       }
 
+      $scope.$watch('indexVM.loading', (oldval, newval) => {
 
-      $scope.$watch(()=> {
-        return $scope.indexVM.results && $scope.indexVM.results.hits.total
-      }, ()=> {
+        if (oldval != newval) setWords()
 
-        var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations.commentsTerms_2 || $scope.indexVM.results.aggregations.filtered_commentsTerms_2.
-            commentsTerms_2);
-        $scope.words = [];
-        angular.forEach(
-          cloudData && cloudData.buckets, (bucket)=> {
 
-            if (!(_.find($scope.indexVM.getFilters(), (filter)=> {
-               return filter['commentsTerms']===bucket.key;
+      });
 
-              }))){
 
-              $scope.words.push({text: bucket.key, weight: bucket.doc_count})
+      /*
+       $scope.$watch(()=> {
 
-            }
+       console.log('watching')
 
-          })
+       return $scope.indexVM.selectedTabIndex;
+       return $scope.indexVM.selectedTabIndex;
+       },(oldval,newval)=>{
 
-      })
+       if(oldval!=newval) setWords();
+
+       })
+       */
+
+
+      /*      $scope.$watch(()=> {
+       return $scope.indexVM.results && $scope.indexVM.results.hits.total
+       }, ()=> {
+
+       setWords();
+
+       })*/
 
 
     }

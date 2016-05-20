@@ -51,7 +51,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   }
 
 
-/*
 
   this.getSort = function () {
 
@@ -74,7 +73,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
   }
 
-*/
 
   this.openSidebar = function (id) {
     $mdSidenav(id).toggle();

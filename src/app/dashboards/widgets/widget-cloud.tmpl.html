@@ -1,8 +1,8 @@
 <div>
 
-  <md-content layout="row" esl-aggregation="ejs.TermsAggregation('comments_cloud_aggr').field('commentsTerms').size(20)">
+  <div  layout="row" esl-aggregation="ejs.TermsAggregation('comments_cloud_aggr').field('commentsTerms').size(20)">
 
-    <div  ng-repeat="bucket in aggResult.buckets"
+    <div id="cloud-dynamic-search_parent_{{bucket.key}}" class="wordcloud_parent"  ng-repeat="bucket in aggResult.buckets"
                 esl-filter="ejs.TermsFilter('commentsTerms', bucket.key)">
 
         <md-button style="min-width:40px;text-transform: uppercase;" ng-if="filter.enabled"
@@ -16,7 +16,7 @@
 
 
     </div>
-  </md-content>
+  </div>
 
 
 </div>

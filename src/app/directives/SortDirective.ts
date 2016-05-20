@@ -9,6 +9,7 @@ export class SortDirective {
     directive.controller = SortController;
     directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, sortCtrl:any) {
 
+/*
       scope.sortBy='Relevance'
 
       scope.sortField=function(){
@@ -27,6 +28,7 @@ export class SortDirective {
 
 
       };
+*/
 
       scope.$watch(element.attr('esl-sort') + " | eslCached", (val:any) => scope.sorting.sort = val);
 

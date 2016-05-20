@@ -24,11 +24,11 @@ export default    function moduleConfig($stateProvider, uicoreMenuProvider) {
       name: 'Search',
       state: 'elasticslice.dashboard-search',
       type: 'link'
-    },{
+    }/*,{
       name: 'NPS Summary',
       state: 'elasticslice.dashboard-NPS',
       type: 'link'
-    }]
+    }*/]
   });
 
 }
