@@ -111,9 +111,11 @@ export default    function cloudWidget($parse) {
 
       }
 
-      $scope.$watch('indexVM.loading', (oldval, newval) => {
+      $scope.$watch('indexVM.loading', (newval, oldval) => {
 
-        if (oldval != newval) setWords()
+        if ((oldval != newval) && (newval!=true)) {
+          setWords()
+        }
 
 
       });
