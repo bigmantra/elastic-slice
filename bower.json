@@ -40,8 +40,7 @@
     "material-design-iconfont": "^0.0.2",
     "angularjs-camelCase-human": "^1.0.0",
     "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
-    "lodash": "^4.12.0",
-    "jqcloud2": "^2.0.1"
+    "lodash": "^4.12.0"
   },
   "overrides": {
     "elasticsearch": {
@@ -71,12 +70,6 @@
       "main": [
         "./css/font-awesome.css",
         "./fonts/*"
-      ]
-    },
-    "jqcloud2": {
-      "main": [
-        "dist/jqcloud.min.css",
-        "dist/jqcloud.js"
       ]
     },
     "ng-file-upload": {

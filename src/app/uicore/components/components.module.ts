@@ -17,6 +17,7 @@ import RightSidenavController from "./rightsidenav/rightsidenav.controller";
 import DefaultToolbarController from "./toolbar/toolbar.controller";
 import ToolbarController from "./toolbars/toolbar.controller";
 import sidenavPushIn from "./rightsidenav/pushsidenav.directive";
+import "./wordcloud/wordcloud";
 
 
 
@@ -40,4 +41,5 @@ export default angular
   .directive('uicoreWizardForm', WizardFormProgress)
   .controller('LeftSidenavController', LeftSidenavController)
   .controller('RightSidenavController', RightSidenavController)
-  .directive('sidenavPushIn',sidenavPushIn)
+  .directive('sidenavPushIn', sidenavPushIn)
+
