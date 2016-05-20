@@ -19,7 +19,8 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
   var vm = this;
 
-
+  vm.sortBy='Relevance';
+  vm.sortByField='surveyDate';
 
 
 
@@ -31,8 +32,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   }
 
   this.showDetailsDialog = function (event, item) {
-
-
 
 
     $mdDialog.show({
@@ -51,6 +50,31 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
   }
 
+
+/*
+
+  this.getSort = function () {
+
+
+    switch (vm.sortBy) {
+
+      case 'Relevance':
+        return;
+      case 'Newest First':
+        return ejs.Sort('surveyDate').order('desc');
+      case 'Oldest First':
+        return ejs.Sort('surveyDate').order('asc');
+      case 'Account':
+        return ejs.Sort('billingAccountId').order('asc');
+      case 'Product Family':
+        return ejs.Sort('productFamily').order('desc');
+    }
+
+
+
+  }
+
+*/
 
   this.openSidebar = function (id) {
     $mdSidenav(id).toggle();
@@ -71,13 +95,12 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   function init() {
 
     //Hide nav and top toolbar if portal=true param is passed in the url
-    if ($stateParams.portal=="true") {
+    if ($stateParams.portal == "true") {
 
       uicoreLayout.setOption('showLeftSideNav', false);
       uicoreLayout.setOption('showToolbar', false);
 
     }
-
 
 
   }

@@ -4,7 +4,12 @@
       <span ng-if="indexVM.results.hits.total" style="margin-left: 12px;margin-right: 12px;font-size: 12px">Showing {{((indexVM.page-1) * indexVM.pageSize)+1}} to {{indexVM.results.hits.total>indexVM.pageSize?indexVM.page * indexVM.pageSize:indexVM.results.hits.total}} of {{indexVM.results.hits.total}} Records</span>
       <span flex></span>
     </div>
-
+    <md-input-container>
+      <label style="font-size: 12px;">Sort By</label>
+      <md-select ng-model="sortBy"  esl-sort="ejs.Sort(sortBy=='Relevance'?'_score':'surveyDate').order('desc')" esl-enabled="'true'">
+        <md-option ng-repeat="sortItem in ['Relevance','Newest First','Account','Product Family']"  >{{sortItem}}</md-option>
+      </md-select>
+    </md-input-container>
 
   </md-content>
 
@@ -22,6 +27,8 @@
             <md-option ng-repeat="item in [5,10, 20, 50, 100]">{{item}}</md-option>
           </md-select>
         </md-input-container>
+
+
       </div>
       <div ng-if="!indexVM.results.hits.total" layout='row' layout-fill layout-margin layout-align='start center'>
         <span>No results containing all your search terms were found</span>

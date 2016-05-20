@@ -7,13 +7,18 @@ export class FilterDirective {
     directive.scope = true;
     directive.controller = FilterController;
     directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs:any, filterCtrl:any) {
-      scope.$watch(element.attr('esl-filter') + " | eslCached", (val:any) => scope.filter.filter = val);
+      scope.$watch(element.attr('esl-filter') + " | eslCached", (val:any) => {
+        scope.filter.filter = val
+      });
 
       var enabled = false;
       var enabledAttr = element.attr('esl-enabled');
       if (enabledAttr) {
-        scope.$watch(enabledAttr, (val:any) => scope.filter.enabled = val);
+        scope.$watch(enabledAttr, (val:any) => {
+          scope.filter.enabled = val
+        });
         enabled = scope.$eval(enabledAttr);
+
       }
 
       scope.filter = {
