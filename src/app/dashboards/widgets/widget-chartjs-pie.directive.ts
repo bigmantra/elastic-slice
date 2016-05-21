@@ -49,7 +49,7 @@ export default    function chartjsPieWidget($timeout) {
         }
       };
 
-      if (chartData && chartData.buckets) {
+      if (chartData && chartData.buckets && chartData.buckets.length ) {
 
 
         angular.forEach(chartData.buckets, (value, key)=> {
@@ -74,16 +74,34 @@ export default    function chartjsPieWidget($timeout) {
         })
 
       }
+      else {
+        $scope.pieChart.labels=['No Results'];
+        $scope.pieChart.data=[1];
+        $scope.pieChart.colours.push('#808080');
+      }
 
 
     }
 
+/*
     $scope.$watch(()=> {
       return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_category_chart_aggr || $scope.indexVM.results.aggregations.category_chart_aggr)
     }, ()=> {
 
       refreshData()
     })
+*/
+
+    $scope.$watch('indexVM.loading', (newval, oldval) => {
+
+      if ((oldval != newval) && (newval!=true)) {
+        console.log('refreshing');
+        refreshData()
+      }
+
+
+    });
+
 
 
   }

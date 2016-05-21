@@ -57,7 +57,7 @@ export default    function chartjsLineWidget() {
         data: [[]]
       };
 
-      if (chartData && chartData.buckets) {
+      if (chartData && chartData.buckets && chartData.buckets.length) {
 
 
         angular.forEach(chartData.buckets, (value, key)=> {
@@ -82,16 +82,35 @@ export default    function chartjsLineWidget() {
 
 
       }
+      else {
+        $scope.lineChart.series=['No Results'];
+        $scope.lineChart.data=[[0]];
+      }
+
 
 
     }
 
+
+    $scope.$watch('indexVM.loading', (newval, oldval) => {
+
+      if ((oldval != newval) && (newval!=true)) {
+        console.log('refreshing');
+        refreshData()
+      }
+
+
+    });
+
+
+/*
     $scope.$watch(()=> {
       return $scope.indexVM.results && $scope.indexVM.results.hits.total
     }, ()=> {
 
       refreshData()
     })
+*/
 
     /*    // Simulate async data update
      $scope.intervalPromise = $interval(randomData, 50000);*/
