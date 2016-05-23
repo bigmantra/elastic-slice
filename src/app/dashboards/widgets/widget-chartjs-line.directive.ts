@@ -95,7 +95,6 @@ export default    function chartjsLineWidget() {
     $scope.$watch('indexVM.loading', (newval, oldval) => {
 
       if ((oldval != newval) && (newval!=true)) {
-        console.log('refreshing');
         refreshData()
       }
 

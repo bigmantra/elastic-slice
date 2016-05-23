@@ -23,7 +23,6 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
   vm.sortByField='surveyDate';
 
 
-
   function newMailNotificationController() {
     var vm = this;
     vm.viewUnread = function () {
@@ -85,6 +84,9 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
       $mdDialog.cancel();
     };
   }
+
+
+
 
   function cancelDialog() {
     $scope.alert = 'You closed details dialog ';

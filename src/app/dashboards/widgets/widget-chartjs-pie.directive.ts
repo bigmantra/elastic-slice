@@ -95,7 +95,6 @@ export default    function chartjsPieWidget($timeout) {
     $scope.$watch('indexVM.loading', (newval, oldval) => {
 
       if ((oldval != newval) && (newval!=true)) {
-        console.log('refreshing');
         refreshData()
       }
 
