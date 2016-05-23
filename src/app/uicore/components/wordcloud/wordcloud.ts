@@ -10,6 +10,7 @@
 
 
 
+import {log} from "typings/dist/support/cli";
 declare var parseFloat:any;
 
 
@@ -286,6 +287,7 @@ export default (function($) {
       //Girish changed for elasticslice. use word text as id instead of an index
       var word_id = this.data.namespace + word.text,
 
+
         word_selector = '#' + word_id,
 
       // option.shape == 'elliptic'
@@ -300,7 +302,6 @@ export default (function($) {
         word_span,
         word_size,
         word_style;
-
 
 
       // Create word attr object

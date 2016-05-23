@@ -25,11 +25,11 @@ declare var angularDragula:any;
 
 module elasticslice {
 
-  
+
   angular.module('elasticslice', ['permission','elasticsearch', 'elasticslice.filters', 'elasticslice.controllers', 'elasticslice.services', 'elasticslice.directives', 'ui.router', 'uicore', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
       'googlechart', 'chart.js', 'linkify','camelCaseToHuman', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table','angularUtils.directives.dirPagination', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages','elasticslice.permission'])
     .value('googleChartApiConfig', googleChartApiConfig)
-/*    .constant('eslHost', 'http://lngoxfappc061.legal.regn.net:3000/proteus')*/
+    // .constant('eslHost', 'http://lngoxfappc061.legal.regn.net:3000/proteus')
     .constant('eslHost', 'http://localhost:3000')
     .controller('ErrorPageController', ErrorPageController)
     .controller('AppFooterController', AppFooterController)

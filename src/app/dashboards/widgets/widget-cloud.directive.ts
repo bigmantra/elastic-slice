@@ -1,6 +1,7 @@
 // declare var jQCloud;
 
 import * as _ from "lodash";
+import {AngularTool} from "../../util/AngularTool";
 
 interface iJQCloud extends JQuery {
 
@@ -29,18 +30,31 @@ export default    function cloudWidget($parse) {
     restrict: 'E',
     templateUrl: 'app/dashboards/widgets/widget-cloud.tmpl.html',
     // template:'<div></div>',
-    replace: true,
+    replace:true,
+    scope:true,
+    link:()=>null
     /*    scope: {
      words: '=words',
      afterCloudRender: '&'
      },*/
-    link: function ($scope, $elem, $attr, widgetCtrl) {
+
+
+  };
+
+  (<any>directive).link=  {
+
+    'pre':function(scope, elem, attrs) {
+      AngularTool.setupBinding($parse, scope, attrs, ["field"]);
+    },
+
+    'post':function ($scope, $elem, $attr) {
+
       var
         options:any = {};
 
+
       $scope.words = [];
       $scope.cloudFiltersExist=false;
-
 
       for (var i = 0, l = jqcOptions.length
         ; i < l; i++) {
@@ -84,15 +98,17 @@ export default    function cloudWidget($parse) {
 
       function setWords() {
 
-        var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations.comments_cloud_aggr || $scope.indexVM.results.aggregations.filtered_comments_cloud_aggr.
-            comments_cloud_aggr);
+        var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations[$scope.field + '_cloud_aggr'] || $scope.indexVM.results.aggregations['filtered_' + $scope.field + '_cloud_aggr'][$scope.field + '_cloud_aggr']);
         $scope.words = [];
         $scope.cloudFiltersExist=false;
+
+
+
         angular.forEach(
           cloudData && cloudData.buckets, (bucket)=> {
 
             if (!(_.find($scope.indexVM.getFilters(), (filter)=> {
-                return filter['commentsTerms'] === bucket.key;
+                return filter[$scope.field] === bucket.key;
 
               }))) {
 
@@ -127,8 +143,8 @@ export default    function cloudWidget($parse) {
 
     }
 
+  }
 
-  };
   return directive;
 
 }
