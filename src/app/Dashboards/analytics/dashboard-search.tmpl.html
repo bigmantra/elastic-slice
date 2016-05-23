@@ -24,6 +24,9 @@
 
       <div class="esl-dash-content" flex-gt-sm="66" flex="100" layout="column" layout-margin>
 
+        <!--  <esl-current-filters></esl-current-filters>-->
+
+
         <md-tabs class="md-primary" md-selected="selectedTabIndex" md-stretch-tabs="always" md-dynamic-height>
           <md-tab label="Summary">
 
@@ -84,8 +87,17 @@
 
             <div layout="column" layout-margin>
 
+              <uicore-widget title="NPS Comments(Terms)">
 
-              <uicore-widget title="Suggestions to Improve Terms" content-layout="column">
+                <cloud-widget shape="rectangular" class="word-cloud" center="{x: 0.5, y:0.6}" id="commentsTerms_cloud" steps="7"
+                              field="'commentsTerms'"
+                              font-size="{from:0.05, to:0.02}"></cloud-widget>
+
+              </uicore-widget>
+
+
+              <uicore-widget title="Suggestions to Improve(Terms)">
+
 
                 <cloud-widget class="word-cloud" center="{x: 0.5, y:0.6}" id="suggestionsToImprove_cloud" steps="7"
                               field="'suggestionsToImprove'"
@@ -93,16 +105,6 @@
 
               </uicore-widget>
 
-            </div>
-            <div layout="column" layout-margin>
-
-              <uicore-widget title="Comment Terms">
-
-                <cloud-widget class="word-cloud" center="{x: 0.5, y:0.6}" id="commentsTerms_cloud" steps="7"
-                              field="'commentsTerms'"
-                              font-size="{from:0.05, to:0.02}"></cloud-widget>
-
-              </uicore-widget>
 
 
             </div>

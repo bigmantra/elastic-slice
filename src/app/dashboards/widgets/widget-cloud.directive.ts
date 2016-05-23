@@ -30,9 +30,9 @@ export default    function cloudWidget($parse) {
     restrict: 'E',
     templateUrl: 'app/dashboards/widgets/widget-cloud.tmpl.html',
     // template:'<div></div>',
-    replace:true,
-    scope:true,
-    link:()=>null
+    replace: true,
+    scope: true,
+    link: ()=>null
     /*    scope: {
      words: '=words',
      afterCloudRender: '&'
@@ -41,20 +41,20 @@ export default    function cloudWidget($parse) {
 
   };
 
-  (<any>directive).link=  {
+  (<any>directive).link = {
 
-    'pre':function(scope, elem, attrs) {
+    'pre': function (scope, elem, attrs) {
       AngularTool.setupBinding($parse, scope, attrs, ["field"]);
     },
 
-    'post':function ($scope, $elem, $attr) {
+    'post': function ($scope, $elem, $attr) {
 
       var
         options:any = {};
 
 
       $scope.words = [];
-      $scope.cloudFiltersExist=false;
+      $scope.cloudFiltersExist = false;
 
       for (var i = 0, l = jqcOptions.length
         ; i < l; i++) {
@@ -100,8 +100,7 @@ export default    function cloudWidget($parse) {
 
         var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations[$scope.field + '_cloud_aggr'] || $scope.indexVM.results.aggregations['filtered_' + $scope.field + '_cloud_aggr'][$scope.field + '_cloud_aggr']);
         $scope.words = [];
-        $scope.cloudFiltersExist=false;
-
+        $scope.cloudFiltersExist = false;
 
 
         angular.forEach(
@@ -115,8 +114,8 @@ export default    function cloudWidget($parse) {
               $scope.words.push({text: bucket.key, weight: bucket.doc_count})
 
             }
-            else{
-              $scope.cloudFiltersExist=true;
+            else {
+              $scope.cloudFiltersExist = true;
             }
           })
 

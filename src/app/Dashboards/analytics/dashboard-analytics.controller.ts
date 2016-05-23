@@ -1,3 +1,5 @@
+
+
 /* @ngInject */
 export default  function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state, $mdDialog, $mdSidenav, uicoreLayout, $stateParams) {
 
@@ -21,6 +23,10 @@ export default  function DashboardAnalyticsController($scope, $timeout, $mdToast
 
   vm.sortBy='Relevance';
   vm.sortByField='surveyDate';
+  // vm.currentFilters=$scope.indexVM && $scope.indexVM.getFilters();
+
+
+
 
 
   function newMailNotificationController() {

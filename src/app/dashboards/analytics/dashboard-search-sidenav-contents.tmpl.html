@@ -1,41 +1,13 @@
-<!--<style>
-  #cloud-dynamic { width: 100%; height: 250px; }
-</style>-->
-
 <md-content layout="column">
 
 
-<!--
-  <div>
-
-    <md-toolbar style="min-height:30px">
-      <h4 style="max-height:30px">Current Selections</h4>
-    </md-toolbar>
-
-    <div layout="row" layout-wrap>
-        {{vm.currentFilters}}
-        <md-button ng-repeat="selectedfilter in vm.currentFilters" style="min-width:30px;text-transform: lowercase"  class="md-primary"
-                   aria-label="undo year selection">
-          {{selectedfilter}} <span
-          style="vertical-align: super;color: red;font-size: .83em ">x</span>
-        </md-button>
-
-    </div>
-
-
-  </div>
-
-
--->
-
-
-
+  <esl-current-filters></esl-current-filters>
   <esl-singleselect name="surveyYear_prompt_aggr" field="'surveyYear'" size="10"></esl-singleselect>
   <esl-checklist field="'productFamily'" size="5"></esl-checklist>
   <esl-checklist field="'practiceArea'" size="5"></esl-checklist>
   <esl-checklist more="false" field="'category'" size="5"></esl-checklist>
-  <esl-checklist more="true" field="'suggestionsToImprove'" size="20"></esl-checklist>
   <esl-checklist field="'commentsTerms'" size="20"></esl-checklist>
+  <esl-checklist more="true" field="'suggestionsToImprove'" size="20"></esl-checklist>
 
 
   <!--

@@ -12,6 +12,7 @@ import {ChecklistDirective} from "../widgets/directives/ChecklistDirective";
 import {SearchboxDirective} from "../widgets/directives/SearchboxDirective";
 import {SingleselectDirective} from "../widgets/directives/SingleselectDirective";
 import {SimplePagingDirective} from "../widgets/directives/SimplePagingDirective";
+import {CurrentFiltersDirective} from "../widgets/directives/currentfilters.directive";
 
 
 export default angular.module('elasticslice.directives', [])
@@ -25,9 +26,11 @@ export default angular.module('elasticslice.directives', [])
   .directive('eslQuery', [QueryDirective])
   .directive('eslSort', [SortDirective])
   .directive('eslVar', [VarDirective])
-  .directive('eslChecklist', ['$parse',ChecklistDirective])
-  .directive('eslSearchbox', ['$parse',SearchboxDirective])
-  .directive('eslSingleselect', ['$parse',SingleselectDirective])
-  .directive('eslSimplePaging', ['$parse',SimplePagingDirective]);
+  .directive('eslChecklist', ['$parse', ChecklistDirective])
+  .directive('eslSearchbox', ['$parse', SearchboxDirective])
+  .directive('eslSingleselect', ['$parse', SingleselectDirective])
+  .directive('eslSimplePaging', ['$parse', SimplePagingDirective])
+  .directive('eslCurrentFilters', ['$parse', CurrentFiltersDirective]);
+
 
 ;

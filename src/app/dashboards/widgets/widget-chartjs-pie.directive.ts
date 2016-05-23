@@ -83,14 +83,6 @@ export default    function chartjsPieWidget($timeout) {
 
     }
 
-/*
-    $scope.$watch(()=> {
-      return $scope.indexVM.results && ($scope.indexVM.results.aggregations.filtered_category_chart_aggr || $scope.indexVM.results.aggregations.category_chart_aggr)
-    }, ()=> {
-
-      refreshData()
-    })
-*/
 
     $scope.$watch('indexVM.loading', (newval, oldval) => {
 

@@ -3,7 +3,7 @@
 
   <div  layout="row" layout-wrap esl-aggregation="ejs.TermsAggregation(field + '_cloud_aggr').field(field).size(20)">
 
-    <div  id="cloud-dynamic-search_parent_{{bucket.key}}" class="wordcloud_parent"  ng-repeat="bucket in aggResult.buckets"
+    <div  id="{{field}}_cloud_{{bucket.key}}" ng-repeat="bucket in aggResult.buckets"
                 esl-filter="ejs.TermsFilter(field, bucket.key)">
 
         <md-button style="min-width:40px;text-transform: uppercase;" ng-if="filter.enabled"

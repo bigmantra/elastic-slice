@@ -20,19 +20,6 @@ export class ChecklistDirective {
       }
     }
 
-    // TODO: make sure checked boxes are always at top
-/*
-    directive.template = '\
-            <ul class="nav nav-list" esl-aggregation="ejs.TermsAggregation(agg_name).field(field).size(size)">\
-                <li ng-repeat="bucket in aggResult.buckets">\
-                    <label class="checkbox" esl-filter="ejs.TermsFilter(field, bucket.key)">\
-                        <input type="checkbox" ng-model="filter.enabled">\
-                        {{bucket.key}} ({{bucket.doc_count}})\
-                    </label>\
-                </li>\
-            </ul>';
-*/
-
 
     directive.templateUrl='app/widgets/directives/checklist.tmpl.html';
 
