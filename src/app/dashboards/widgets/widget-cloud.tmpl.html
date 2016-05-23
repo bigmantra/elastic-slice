@@ -1,19 +1,18 @@
 <div>
 
-  <div  layout="row" esl-aggregation="ejs.TermsAggregation('comments_cloud_aggr').field('commentsTerms').size(20)">
+  <div  layout="row" layout-wrap esl-aggregation="ejs.TermsAggregation('comments_cloud_aggr').field('commentsTerms').size(20)">
 
-    <div id="cloud-dynamic-search_parent_{{bucket.key}}" class="wordcloud_parent"  ng-repeat="bucket in aggResult.buckets"
+    <div  id="cloud-dynamic-search_parent_{{bucket.key}}" class="wordcloud_parent"  ng-repeat="bucket in aggResult.buckets"
                 esl-filter="ejs.TermsFilter('commentsTerms', bucket.key)">
 
-        <md-button style="min-width:40px;text-transform: uppercase;" ng-if="filter.enabled"
+        <md-button ng-style="cloudFiltersExist?{transform:'translate(0px, -20px)'}:null;" style="min-width:40px;text-transform: uppercase;" ng-if="filter.enabled"
                    ng-click="filter.enabled=false;"
                    aria-label="undo selection">
           <a>{{bucket.key}}</a> <span
           style="vertical-align: super;color: red;font-size: .83em ">x</span>
         </md-button>
 
-      <span class="wordcloud_word"  id="cloud-dynamic-search_word_{{bucket.key}}" ng-click="filter.enabled=true;"></span>
-
+      <span  class="wordcloud_word"  id="cloud-dynamic-search_word_{{bucket.key}}" ng-click="filter.enabled=true;"></span>
 
     </div>
   </div>

@@ -39,6 +39,7 @@ export default    function cloudWidget($parse) {
         options:any = {};
 
       $scope.words = [];
+      $scope.cloudFiltersExist=false;
 
 
       for (var i = 0, l = jqcOptions.length
@@ -86,6 +87,7 @@ export default    function cloudWidget($parse) {
         var cloudData = $scope.indexVM.results && ($scope.indexVM.results.aggregations.comments_cloud_aggr || $scope.indexVM.results.aggregations.filtered_comments_cloud_aggr.
             comments_cloud_aggr);
         $scope.words = [];
+        $scope.cloudFiltersExist=false;
         angular.forEach(
           cloudData && cloudData.buckets, (bucket)=> {
 
@@ -97,7 +99,9 @@ export default    function cloudWidget($parse) {
               $scope.words.push({text: bucket.key, weight: bucket.doc_count})
 
             }
-
+            else{
+              $scope.cloudFiltersExist=true;
+            }
           })
 
 
@@ -113,36 +117,12 @@ export default    function cloudWidget($parse) {
 
       $scope.$watch('indexVM.loading', (newval, oldval) => {
 
-        if ((oldval != newval) && (newval!=true)) {
+        if ((oldval != newval) && (newval != true)) {
           setWords()
         }
 
 
       });
-
-
-      /*
-       $scope.$watch(()=> {
-
-       console.log('watching')
-
-       return $scope.indexVM.selectedTabIndex;
-       return $scope.indexVM.selectedTabIndex;
-       },(oldval,newval)=>{
-
-       if(oldval!=newval) setWords();
-
-       })
-       */
-
-
-      /*      $scope.$watch(()=> {
-       return $scope.indexVM.results && $scope.indexVM.results.hits.total
-       }, ()=> {
-
-       setWords();
-
-       })*/
 
 
     }
