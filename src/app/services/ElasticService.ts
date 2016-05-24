@@ -8,7 +8,8 @@
         static $inject = ['esFactory', 'eslURL','$location'];
         constructor(esFactory:any, eslURL:any,$location:any) {
             this.esFactory = esFactory;
-            this.setHost($location.host() + ':' + $location.port() + eslURL);
+          var baseUrl= 'http://' + $location.host() + ':' + $location.port() + ($location.host()=='localhost'?'':'proteus');
+            this.setHost( baseUrl +  eslURL);
         }
 
         public setHost(host:any) {

@@ -21,9 +21,11 @@ export default function UserService($q, $http, RoleStore,eslURL,$location) {
 
   function getCurrentUser() {
 
+    var baseUrl= 'http://' + $location.host() + ':' + $location.port() + ($location.host()=='localhost'?'':'proteus');
+
     return $http({
       method: 'GET',
-      url: 'http://' + $location.host() + ':' + $location.port() + '/user'
+      url: baseUrl + '/user'
     })
   }
 
