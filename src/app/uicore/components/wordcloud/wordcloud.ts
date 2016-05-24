@@ -40,8 +40,6 @@ export default (function($) {
 
     this.$element = $(element);
 
-    console.log(this.$element);
-
     this.word_array = word_array || [];
     this.options = options;
 

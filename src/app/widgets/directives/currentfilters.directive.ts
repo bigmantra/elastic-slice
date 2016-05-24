@@ -18,8 +18,6 @@ export class CurrentFiltersDirective {
 
       function setFilters(){
 
-        console.log('setting filters');
-
         var filters=[];
 
         _.forEach((scope.indexVM && scope.indexVM.filters && scope.indexVM.filters.ejsObjects),(obj)=>{

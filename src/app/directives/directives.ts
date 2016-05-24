@@ -1,7 +1,6 @@
 import {AggregationDirective} from "./AggregationDirective";
 import {FilterDirective} from "./FilterDirective";
 import {HighlightDirective} from "./HighlightDirective";
-import {HostDirective} from "./HostDirective";
 import {IndexDirective} from "./IndexDirective";
 import {InvertedDirective} from "./InvertedDirective";
 import {OrFilterDirective} from "./OrFilterDirective";
@@ -13,13 +12,14 @@ import {SearchboxDirective} from "../widgets/directives/SearchboxDirective";
 import {SingleselectDirective} from "../widgets/directives/SingleselectDirective";
 import {SimplePagingDirective} from "../widgets/directives/SimplePagingDirective";
 import {CurrentFiltersDirective} from "../widgets/directives/currentfilters.directive";
+import {URLDirective} from "./HostDirective";
 
 
 export default angular.module('elasticslice.directives', [])
   .directive('eslAggregation', [AggregationDirective])
   .directive('eslFilter', [FilterDirective])
   .directive('eslHighlight', [HighlightDirective])
-  .directive('eslHost', [HostDirective])
+  .directive('eslURL', [URLDirective])
   .directive('eslIndex', [IndexDirective])
   .directive('eslInverted', [InvertedDirective])
   .directive('eslOrFilter', [OrFilterDirective])

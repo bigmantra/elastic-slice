@@ -1,4 +1,4 @@
 /** @ngInject */
 export default function runBlock($log: angular.ILogService) {
-  $log.debug('runBlock end');
+  // $log.debug('runBlock end');
 }

@@ -1,5 +1,5 @@
     import {HostController} from "../controllers/HostController";
-    export class HostDirective {
+    export class URLDirective {
         constructor() {
             var directive: ng.IDirective = {};
             directive.restrict = 'A';
